@@ -1,0 +1,25 @@
+$blue: #0042D4;
+$white: #F8F8F8;
+$black: #000000;
+$yellow: #FCF671;
+$s_micro: 10px;
+$s_small: 12px;
+$s_bigger: 18px;
+$s_medium: 24px;
+$s_subtitle: 32px;
+$s_big: 68px;
+@font-face {
+    font-family: "Whyte";
+    src        : url("../fonts/whyte.woff") format("woff"), url("../fonts/whyte.ttf") format("truetype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Whyte";
+    src        : url("../fonts/whyte_light.woff") format("woff"), url("../fonts/whyte_light.ttf") format("truetype");
+    font-weight: 300;
+}
+@font-face {
+    font-family: "ISO";
+    src        : url("../fonts/iso.woff") format("woff"), url("../fonts/iso.ttf") format("truetype");
+    font-weight: 400;
+}

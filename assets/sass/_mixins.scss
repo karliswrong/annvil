@@ -1,0 +1,105 @@
+@mixin respond($media) {
+    @if $media == mobile {
+        @media only screen and (max-width: 600px) {
+            @content;
+        }
+    } @else 
+    if $media == tablets {
+        @media only screen and (min-width: 600px) and (max-width: 1090px) {
+            @content;
+        }
+    } @else 
+    if $media == desktop {
+        @media only screen and (min-width: 1090px) {
+            @content;
+        }
+    } @else 
+    if $media == bigdesktop {
+        @media only screen and (min-width: 1500px) {
+            @content;
+        }
+    } @else 
+    if $media == alldevices {
+        @media only screen and (max-width: 1090px) {
+            @content;
+        }
+    } @else 
+    if $media == retina {
+        @media (-webkit-min-device-pixel-ratio: 2) {
+            @content;
+        }
+    }
+}
+@mixin borderbox {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing   : border-box;
+    box-sizing        : border-box;
+}
+@mixin resetkit {
+    -webkit-appearance: none;
+    -moz-appearance   : none;
+    text-indent       : 1px;
+    text-overflow     : '';
+}
+@mixin fontsmooth {
+    text-rendering            : optimizeLegibility;
+    -webkit-font-smoothing    : antialiased;
+    -moz-osx-font-smoothing   : grayscale;
+    -moz-font-feature-settings: 'liga', 'kern';
+}
+@mixin disableselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select  : none;
+    -moz-user-select     : none;
+    -ms-user-select      : none;
+    user-select          : none;
+}
+@mixin disabledrag {
+    -webkit-user-drag: none;
+    -khtml-user-drag : none;
+    -moz-user-drag   : none;
+    -o-user-drag     : none;
+    user-drag        : none;
+}
+@mixin placeholder($color) {
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+
+    &:-moz-placeholder {
+        color: $color;
+    }
+
+    &::-moz-placeholder {
+        color: $color;
+    }
+
+    &:-ms-input-placeholder {
+        color: $color;
+    }
+}
+@mixin selectionColor($bg, $color) {
+    &::-moz-selection,
+    &::selection {
+        background-color: $bg;
+        color           : $color;
+    }
+}
+@mixin scrollbar($color, $width) {
+    -webkit-overflow-scrolling: touch;
+    -moz-overflow-scrolling   : touch;
+    overflow-scrolling        : touch;
+    overflow                  : auto;
+
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $color;
+    }
+}
