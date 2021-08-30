@@ -46,6 +46,10 @@ a {
         width         : 100%;
         height        : 100%;
         vertical-align: middle;
+
+        &.bottom {
+            vertical-align: bottom;
+        }
     }
 }
 
@@ -166,6 +170,12 @@ a.post-edit-link {
                     margin-left: 0;
                 }
 
+                &.current-menu-item {
+                    a {
+                        text-decoration: underline;
+                    }
+                }
+
                 a {
                     display       : inline-block;
                     font-size     : $s_small;
@@ -240,6 +250,7 @@ a.more {
         border     : 0;
         height     : 25px;
         line-height: 25px;
+        display    : inline-block;
     }
 
     &.white {
@@ -271,6 +282,170 @@ a.more {
                     }
                 }
             }
+        }
+    }
+}
+
+.animate {
+    @include respond(desktop) {
+        @include transition-property(perspective, rotateX, transform);
+        @include transition-duration(0.2s);
+        @include transform(perspective(600px) rotateX(0deg));
+
+        &:hover {
+            @include transform(perspective(600px) rotateX(3deg));
+        }
+    }
+}
+
+.portfolio-items {
+    overflow     : hidden;
+    position     : relative;
+    top          : -80px;
+    padding-left : 40px;
+    padding-right: 40px;
+
+    .small-items {
+        position   : relative;
+        border-top : 1px solid $black;
+        top        : -40px;
+        padding-top: 80px;
+
+        .group {
+            border-top : 1px solid $black;
+            overflow   : hidden;
+            padding-top: 80px;
+            margin-top : 80px;
+            margin-left: -30px;
+
+            &:first-child {
+                border-top : 0;
+                margin-top : 0;
+                padding-top: 0;
+            }
+
+            .group-wrapper {
+                overflow   : hidden;
+                max-width  : 90%;
+                margin-left: auto;
+                @include respond(bigdesktop) {
+                    max-width   : 80%;
+                    padding-left: 23%;
+                }
+
+                .items-wrapper {
+                    overflow   : hidden;
+                    width      : 78.8%;
+                    margin-left: auto;
+                    position   : relative;
+                    @include respond(bigdesktop) {
+                        width: 100%;
+                    }
+
+                    .portfolio-item {
+                        float      : left;
+                        width      : 30%;
+                        position   : relative;
+                        height     : 554px;
+                        margin-left: 30px;
+                        @include respond(desktop) {
+                            &:hover {
+                                a.p-item-title {
+                                    color: $blue;
+                                }
+                            }
+                        }
+                        @include respond(bigdesktop) {
+                            height: 610px;
+                        }
+
+                        a.p-item-title {
+                            line-height  : 1.1;
+                            margin-bottom: 30px;
+                        }
+
+                        a.picture {
+                            display    : block;
+                            height     : 0;
+                            padding-top: 140%;
+                            overflow   : hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .portfolio-item {
+        overflow: hidden;
+
+        &.featured {
+            position      : relative;
+            width         : 100%;
+            padding-top   : 100px;
+            padding-bottom: 80px;
+            max-width     : 100%;
+            margin-left   : auto;
+            @include respond(bigdesktop) {
+                width: 80%;
+            }
+
+            &:before {
+                display         : block;
+                content         : "";
+                width           : 1px;
+                position        : absolute;
+                right           : 0;
+                top             : 0;
+                bottom          : 0;
+                background-color: $black;
+            }
+
+            a.p-item-title {
+                float    : left;
+                width    : 30%;
+                display  : block;
+                font-size: $s_big_small;
+            }
+
+            a.picture {
+                width      : 70%;
+                height     : 0;
+                padding-top: 43%;
+                overflow   : hidden;
+                float      : right;
+                display    : block;
+            }
+        }
+
+        a.p-item-title {
+            line-height   : 1;
+            color         : $black;
+            text-transform: uppercase;
+            font-size     : $s_medium;
+            display       : inline-block;
+            @include respond(desktop) {
+                @include transition-property(color);
+                @include transition-duration(0.2s);
+            }
+        }
+
+        a.more {
+            font-size : $s_bigger;
+            margin-top: 30px;
+            @include respond(desktop) {
+                @include transition-property(color);
+                @include transition-duration(0.2s);
+            }
+
+            svg {
+                width: 14px;
+            }
+        }
+
+        .picture {
+            background-size    : cover;
+            background-position: center;
         }
     }
 }
@@ -393,24 +568,6 @@ a.more {
         span {
             border-left : 1px solid $black;
             padding-left: 40px;
-        }
-    }
-}
-
-.list {
-    ul {
-        li {
-            a {
-                @include respond(desktop) {
-                    @include transition-property(perspective, rotateX, transform);
-                    @include transition-duration(0.2s);
-                    @include transform(perspective(600px) rotateX(0deg));
-
-                    &:hover {
-                        @include transform(perspective(600px) rotateX(3deg));
-                    }
-                }
-            }
         }
     }
 }
@@ -549,7 +706,7 @@ a.more {
 
                 li {
                     display    : block;
-                    width      : 30.3%;
+                    width      : 30.1%;
                     float      : left;
                     margin-left: 30px;
 
@@ -661,6 +818,97 @@ a.more {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+.page-title {
+    padding-left  : 40px;
+    padding-right : 40px;
+    position      : relative;
+    padding-top   : 40px;
+    padding-bottom: 120px;
+
+    &:before {
+        display         : block;
+        content         : "";
+        position        : absolute;
+        right           : 40px;
+        height          : 100%;
+        top             : 0;
+        width           : 1px;
+        background-color: $black;
+    }
+
+    h1 {
+        font-size     : $s_big;
+        line-height   : 1;
+        text-transform: uppercase;
+    }
+}
+
+.filters {
+    padding-left : 40px;
+    padding-right: 80px;
+    padding-top  : 40px;
+    position     : relative;
+    top          : -68px;
+    overflow     : hidden;
+
+    &:before {
+        display         : block;
+        content         : "";
+        height          : 1px;
+        position        : absolute;
+        left            : 40px;
+        right           : 40px;
+        top             : 67px;
+        background-color: $black;
+    }
+
+    a,
+    p {
+        vertical-align: top;
+        color         : $black;
+        font-size     : $s_bigger;
+        text-transform: uppercase;
+        display       : inline-block;
+        padding-bottom: 10px;
+        line-height   : 1;
+    }
+
+    p {
+        float: left;
+    }
+
+    ul {
+        float: right;
+
+        li {
+            display     : block;
+            float       : left;
+            margin-left : 40px;
+            padding-left: 40px;
+            border-left : 1px solid $black;
+
+            &:first-child {
+                padding-left: 0;
+                margin-left : 0;
+                border-left : 0;
+            }
+
+            a {
+                vertical-align: top;
+                @include respond(desktop) {
+                    &:hover {
+                        color: $blue;
+                    }
+                }
+
+                &:active {
+                    color: $blue;
                 }
             }
         }
@@ -833,6 +1081,8 @@ a.more {
 
         .links {
             overflow: hidden;
+            position: relative;
+            z-index : 2;
 
             a,
             p {

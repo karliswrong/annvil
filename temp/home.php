@@ -48,7 +48,7 @@
 
           ?>
 
-          <li class="<?php echo $klass; ?>">
+          <li class="<?php echo $klass; ?> animate">
 
             <a href="<?php echo get_the_permalink($id); ?>">
 
