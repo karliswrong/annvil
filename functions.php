@@ -113,4 +113,11 @@ function wporg_register_taxonomy_portfolio() {
 
 add_action( 'init', 'wporg_register_taxonomy_portfolio' );
 
+function dashboard_redirect($url) {
+  $url = '/';
+  return $url;
+}
+
+add_filter('login_redirect', 'dashboard_redirect');
+
 ?>
