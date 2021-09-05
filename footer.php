@@ -12,9 +12,7 @@
     <div class="wrapper">
 
       <div class="text">
-        <p>We make places, people want  to return to</p>
-        <span>Contact us for offers,<br>
-          collaborations & inquiries</span>
+        <?php echo $fields_options['footer_text']; ?>
       </div>
 
       <div class="more-button">

@@ -71,12 +71,12 @@ scrollbar .scrollbar-track-y {
 [data-scrollbar] .scrollbar-thumb,
 [scrollbar] .scrollbar-thumb,
 scrollbar .scrollbar-thumb {
-    position        : absolute;
-    top             : 0;
-    left            : 0;
-    width           : 4px;
-    height          : 4px;
-    background-color: rgba($black, 1);
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    width   : 4px;
+    height  : 4px;
+    @include background-image(linear-gradient($black, $blue));
     @include border-radius(0);
 }
 

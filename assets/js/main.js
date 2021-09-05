@@ -2,6 +2,8 @@ var Scrollbar, scrollbar;
 
 $(document).ready(function() {
 
+  var body = $("body");
+
   new LazyLoad();
 
   Scrollbar = window.Scrollbar;
@@ -15,5 +17,9 @@ $(document).ready(function() {
   scrollbar.addListener(Scroll);
 
   $(".footer .contact-us .more-button").height($(".footer .contact-us .text").outerHeight());
+
+  var title_h = $(".project-title .title").outerHeight();
+
+  $(".project-title").height(title_h);
 
 });

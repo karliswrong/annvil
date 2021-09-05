@@ -24,3 +24,8 @@ $s_big: 68px;
     src        : url("../fonts/iso.woff") format("woff"), url("../fonts/iso.ttf") format("truetype");
     font-weight: 400;
 }
+
+.gm-style-cc,
+.gmnoprint {
+    display: none !important;
+}

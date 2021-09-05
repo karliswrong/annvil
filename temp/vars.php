@@ -13,6 +13,7 @@ $meta_description           =     function_exists( 'the_seo_framework' ) ? the_s
 $icons							=				array(
   'logo' => file_get_contents('wp-content/themes/annvil/assets/svg/logo.svg'),
   'arrow' => file_get_contents('wp-content/themes/annvil/assets/svg/arrow.svg'),
+  'lines' => file_get_contents('wp-content/themes/annvil/assets/svg/lines.svg'),
 );
 
 $dev = $fields_options['dev'];
@@ -31,5 +32,15 @@ if ( $dev  ) {
   $version = '';
 
 }
+
+$all_portfolio_terms = get_terms([
+  'taxonomy' => 'type',
+  'hide_empty' => false,
+]);
+
+$all_news_terms = get_terms([
+  'taxonomy' => 'category',
+  'hide_empty' => false,
+]);
 
 ?>

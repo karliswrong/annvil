@@ -106,7 +106,6 @@ function wporg_register_taxonomy_portfolio() {
          'show_ui'           => true,
          'show_admin_column' => true,
          'query_var'         => true,
-         'rewrite'           => [ 'slug' => 'portfolio' ],
      );
 
      register_taxonomy( 'type', [ 'portfolio' ], $args );

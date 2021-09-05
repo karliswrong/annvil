@@ -2,8 +2,17 @@
 
 include("vars.php");
 
+$term_id = get_queried_object()->term_id;
+
 $portfolio_args = array (
     'post_type'              => 'portfolio',
+    'tax_query' => array(
+        array (
+            'taxonomy' => 'type',
+            'field' => 'term_id',
+            'terms' =>  $term_id
+        )
+    ),
     'meta_query' => array(),
     'post_status'            => 'publish',
     'posts_per_page'         => -1
@@ -11,9 +20,7 @@ $portfolio_args = array (
 
 $portfolio = new WP_Query( $portfolio_args );
 
-$featured_portfolio = get_field('featured_portfolio');
-
-// console_log($portfolio);
+console_log($portfolio->posts);
 
 ?>
 
@@ -26,36 +33,23 @@ $featured_portfolio = get_field('featured_portfolio');
 
   <?php if ($all_portfolio_terms): ?>
     <ul>
-      <li class="active"><a href="/our-portfolio">all projects</a></li>
+      <li><a href="/our-portfolio">all projects</a></li>
       <?php foreach ($all_portfolio_terms as $p):
+        if ($p->term_id == $term_id) {
+          $klass = "active";
+        } else {
+          $klass = "";
+        }
       ?>
-        <li><a href="<?php echo get_term_link($p->slug, 'type'); ?>"><?php echo $p->name; ?></a></li>
+        <li class="<?php echo $klass; ?>"><a href="<?php echo get_term_link($p->slug, 'type'); ?>"><?php echo $p->name; ?></a></li>
       <?php endforeach; ?>
     </ul>
   <?php endif; ?>
 </div>
 
-<?php if ($portfolio->posts): ?>
+<?php if ($portfolio->posts) { ?>
 
   <div class="portfolio-items">
-
-    <?php if ($featured_portfolio):
-      $main_pic = get_field('main_picture', $featured_portfolio);
-      // console_log($main_pic);
-    ?>
-
-    <div class="portfolio-item featured">
-      <a href="<?php echo get_the_permalink($featured_portfolio); ?>" class="picture lazy" data-bg="<?php echo $main_pic['sizes']['large']; ?>"></a>
-      <div class="title">
-        <a href="<?php echo get_the_permalink($featured_portfolio); ?>" class="p-item-title"><?php echo get_the_title($featured_portfolio); ?></a>
-        <a href="#" class="more no-borders">
-          <span>Learn More</span>
-          <?php echo $icons['arrow']; ?>
-        </a>
-      </div>
-    </div>
-
-    <?php endif; ?>
 
     <div class="small-items">
 
@@ -90,7 +84,6 @@ $featured_portfolio = get_field('featured_portfolio');
                 </a>
 
                 <a href="<?php echo get_the_permalink($p_id); ?>" class="picture lazy" data-bg="<?php echo $pic['sizes']['large']; ?>"></a>
-
                 <a href="<?php echo get_the_permalink($p_id); ?>" class="more no-borders">
                   <span>Learn More</span>
                   <?php echo $icons['arrow']; ?>
@@ -119,4 +112,8 @@ $featured_portfolio = get_field('featured_portfolio');
 
   </div>
 
-<?php endif; ?>
+<?php } else { ?>
+  <div class="no-posts-found">
+    <p>Sorry. This portfolio category is under CONSTRUCTION...</p>
+  </div>
+<?php } ?>
