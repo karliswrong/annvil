@@ -18,7 +18,7 @@
       <div class="more-button">
         <div class="table">
           <div class="cell">
-            <a href="#" class="more no-borders">
+            <a href="/contact-us/" class="more no-borders">
               <span>contact us</span>
               <?php echo $icons['arrow']; ?>
             </a>

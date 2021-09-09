@@ -23,6 +23,7 @@ include("temp/vars.php");
 	<!-- JS -->
 	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/jquery.drawsvg.js"></script>
 	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/lazyload.min.js"></script>
 	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/smooth-scrollbar.min.js"></script>
 	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/functions.js<?php echo $version; ?>"></script>
@@ -37,6 +38,10 @@ include("temp/vars.php");
 <body <?php body_class(); ?> data-ajaxurl="<?php echo site_url(); ?>/wp-admin/admin-ajax.php">
 
 <?php edit_post_link(); ?>
+
+<div class="about-popup">
+
+</div>
 
 <div class="header">
 	<a class="home" href="<?php echo $site_url; ?>"><?php echo $icons['logo']; ?></a>

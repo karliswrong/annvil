@@ -120,4 +120,80 @@ function dashboard_redirect($url) {
 
 add_filter('login_redirect', 'dashboard_redirect');
 
+function getAbout() { ?>
+
+  <?php
+
+  $team = get_field('team',163);
+
+  ?>
+
+  <div class="lines">
+    <svg width="1386" height="1276" viewBox="0 0 1386 1276" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1241.74 600.858C965.451 1177.78 374.501 1206.15 222.287 1174.77" stroke="#F8F8F8" stroke-miterlimit="10"/>
+    <path d="M1097.84 520.596C1235.34 664.827 1343.43 897.77 1385 1275.55" stroke="#F8F8F8" stroke-miterlimit="10"/>
+    <path d="M1131.77 366.708C1099.79 277.393 982.112 106.609 731.406 1" stroke="#F8F8F8" stroke-miterlimit="10"/>
+    <path d="M965.451 489.818C845.214 396.279 696.198 348.604 523.517 348.604C323.336 348.604 137.865 413.177 1 529.648" stroke="#F8F8F8" stroke-miterlimit="10"/>
+    </svg>
+  </div>
+
+  <div class="about-wrapper">
+
+    <a class="more white" href="#">
+      <span>Go Back</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 10H20" stroke="black" stroke-width="1.5"/>
+      <path d="M20 10C17 10 10 8 10 0" stroke="black" stroke-width="1.5"/>
+      <path d="M20 10C17 10 10 12 10 20" stroke="black" stroke-width="1.5"/>
+      </svg>
+    </a>
+
+    <div class="about-text">
+      <h1><?php the_field('about_title',163); ?></h1>
+      <div class="text">
+        <?php the_field('about_text',163); ?>
+      </div>
+    </div>
+
+    <?php if ($team): ?>
+
+      <div class="our-team">
+
+        <div class="team-wrapper">
+
+          <h2><?php the_field('team_title',163); ?></h2>
+
+          <div class="list">
+
+            <?php foreach ($team as $person): ?>
+              <div class="person">
+                <div class="picture lazy" data-bg="<?php echo $person['picture']['sizes']['large']; ?>"></div>
+                <div class="name">
+                  <p><?php echo $person['name']; ?></p>
+                  <span><?php echo $person['role']; ?></span>
+                </div>
+                <div class="text">
+                  <?php echo $person['text']; ?>
+                </div>
+              </div>
+            <?php endforeach; ?>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    <?php endif; ?>
+
+  </div>
+
+
+<?php die(); } ?>
+
+<?php
+
+add_action( 'wp_ajax_nopriv_getAbout', 'getAbout' );
+add_action( 'wp_ajax_getAbout', 'getAbout' );
+
 ?>

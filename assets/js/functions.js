@@ -1,5 +1,61 @@
 var lastScrollTop;
 
+$.fn.isInViewport = function() {
+  var elementTop = $(this).offset().top + $(window).height();
+
+  var elementBottom = elementTop + $(this).outerHeight();
+
+  var viewportTop = $(window).scrollTop();
+  var viewportBottom = viewportTop + $(window).height();
+
+  return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
+var anim_1 = true;
+var anim_2 = true;
+
+function animateIn(type) {
+
+  if (type == "anim_1") {
+
+    if (anim_1) {
+      console.log("show");
+
+      var el = $(".lines").find("svg");
+
+      var $svg = el.drawsvg({
+        duration: 2000,
+        callback: function() {}
+      });
+
+      $svg.drawsvg('animate');
+
+    }
+
+    anim_1 = false;
+  }
+
+  if (type == "anim_2") {
+
+    if (anim_2) {
+      console.log("show");
+
+      $(".fade-in").each(function(i) {
+        var me = $(this);
+
+        var int = setInterval(function() {
+          me.addClass("show");
+        }, 500 * i);
+
+      });
+
+    }
+
+    anim_2 = false;
+  }
+
+}
+
 function Scroll(status) {
 
   var st = status.offset.y;
@@ -21,6 +77,54 @@ function Scroll(status) {
     $(".header").removeClass("hidden");
   }
 
-  // console.log(st);
+  var isAnimate = $(".isAnimate");
+
+
+  var isVisible = isAnimate.is(':visible');
+  console.log("dvData is " + isVisible);
+
+  if ($("body").hasClass("page-template-home") || $("body").hasClass("page-template-about")) {
+
+    isAnimate.each(function() {
+
+      var me = $(this);
+
+      if (me.isInViewport()) {
+        var anim = me.data("anim");
+        animateIn(anim);
+      }
+
+    });
+
+  }
+
+}
+
+function getAbout() {
+
+  $.ajax({
+    type: 'POST',
+    url: $("body").data("ajaxurl"),
+    data: {
+      action: 'getAbout',
+    },
+    dataType: 'html',
+    success: function(result) {
+      var pop = $(".about-popup");
+      pop.html(result);
+      new LazyLoad();
+
+      var more = pop.find(".more")
+
+      more.on("click tap", function() {
+        pop.removeClass("show");
+        return false;
+      });
+
+    },
+    error: function(result) {
+      console.log(result);
+    }
+  });
 
 }

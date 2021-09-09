@@ -77,7 +77,7 @@
 </div>
 
 <!-- Self Work -->
-<div class="self-work">
+<div class="self-work isAnimate" data-anim="anim_1">
 
   <div class="lines">
     <?php echo $icons['lines']; ?>
@@ -134,7 +134,7 @@
 </div>
 
 <!-- Featured News -->
-<div class="featured-news">
+<div class="featured-news isAnimate" data-anim="anim_2">
   <div class="wrapper">
 
     <h2><?php echo $fields_options['news_intro']; ?></h2>
@@ -162,7 +162,7 @@
 
           <li>
 
-            <div class="post-item">
+            <div class="post-item fade-in">
 
               <?php if ($cover_picture) { ?>
                 <a href="<?php echo $link; ?>" target="<?php echo $target; ?>" class="cover">
@@ -210,3 +210,14 @@
 
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var el = $(".lines").find("svg");
+
+    var $svg = el.drawsvg({
+
+    });
+
+  });
+</script>

@@ -22,4 +22,15 @@ $(document).ready(function() {
 
   $(".project-title").height(title_h);
 
+  if ($("body").hasClass("page-template-home")) {
+    getAbout();
+  }
+
+});
+
+$(document).on("click tap", ".welcome a.more", function() {
+  console.log("show more");
+  var pop = $(".about-popup");
+  pop.addClass("show");
+  return false;
 });
