@@ -77,7 +77,7 @@
 </div>
 
 <!-- Self Work -->
-<div class="self-work isAnimate" data-anim="anim_1">
+<div class="self-work isAnimate" data-anim="anim_1" id="block-selfwork">
 
   <div class="lines">
     <?php echo $icons['lines']; ?>

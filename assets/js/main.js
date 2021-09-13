@@ -34,3 +34,13 @@ $(document).on("click tap", ".welcome a.more", function() {
   pop.addClass("show");
   return false;
 });
+
+$(document).on("click tap", ".header a.show-mob-nav", function() {
+  $(".mobile-nav").stop().slideDown("fast");
+  return false;
+});
+
+$(document).on("click tap", ".mobile-nav a.close-mob-nav", function() {
+  $(".mobile-nav").stop().slideUp("fast");
+  return false;
+});

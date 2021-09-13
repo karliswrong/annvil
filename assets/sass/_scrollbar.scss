@@ -96,9 +96,10 @@ scrollbar .overscroll-glow {
     z-index : 10;
     position: relative;
     // display : none;
-    @include respond(desktop) {
-        .scroll-content {
-            padding-top: 80px;
+    .scroll-content {
+        padding-top: 80px;
+        @include respond(mobile) {
+            padding-top: 60px;
         }
     }
 }

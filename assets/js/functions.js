@@ -1,7 +1,14 @@
 var lastScrollTop;
 
 $.fn.isInViewport = function() {
-  var elementTop = $(this).offset().top + $(window).height();
+
+  var w = $(window).width();
+
+  if (w < 1024) {
+    var elementTop = $(this).offset().top + $(window).height() / 2;
+  } else {
+    var elementTop = $(this).offset().top + $(window).height();
+  }
 
   var elementBottom = elementTop + $(this).outerHeight();
 
@@ -78,10 +85,6 @@ function Scroll(status) {
   }
 
   var isAnimate = $(".isAnimate");
-
-
-  var isVisible = isAnimate.is(':visible');
-  console.log("dvData is " + isVisible);
 
   if ($("body").hasClass("page-template-home") || $("body").hasClass("page-template-about")) {
 

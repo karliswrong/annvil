@@ -14,6 +14,8 @@ $icons							=				array(
   'logo' => file_get_contents('wp-content/themes/annvil/assets/svg/logo.svg'),
   'arrow' => file_get_contents('wp-content/themes/annvil/assets/svg/arrow.svg'),
   'lines' => file_get_contents('wp-content/themes/annvil/assets/svg/lines.svg'),
+  'hamburger' => file_get_contents('wp-content/themes/annvil/assets/svg/hamburger.svg'),
+  'close' => file_get_contents('wp-content/themes/annvil/assets/svg/close.svg'),
 );
 
 $dev = $fields_options['dev'];

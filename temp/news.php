@@ -13,6 +13,13 @@ $news = new WP_Query( $news_args );
 
 $featured_post= get_field('featured_post');
 
+if(isMobile()){
+  $columns  = 2;
+}
+else {
+  $columns = 3;
+}
+
 console_log($news->posts);
 
 ?>
@@ -80,7 +87,7 @@ console_log($news->posts);
 
           <?php if ($id != $featured_post): ?>
 
-            <?php if ($count % 3 == 0) { ?>
+            <?php if ($count % $columns == 0) { ?>
               <div class="group">
                 <div class="group-wrapper">
 

@@ -22,6 +22,14 @@ body {
         background-color: $blue;
 
         .header {
+            a.show-mob-nav {
+                svg {
+                    line {
+                        stroke: $white;
+                    }
+                }
+            }
+
             &:after {
                 background-color: $white;
             }
@@ -101,6 +109,9 @@ body {
         .footer {
             background-color: $yellow;
             margin-top      : 80px;
+            @include respond(mobile) {
+                margin-top: 50px;
+            }
 
             .awards,
             .contact-us {
@@ -133,6 +144,12 @@ body {
     &.page-template-portfolio {
         .footer {
             margin-top: -40px;
+            @include respond(tablets) {
+                margin-top: 80px;
+            }
+            @include respond(mobile) {
+                margin-top: 60px;
+            }
         }
     }
 
@@ -140,6 +157,10 @@ body {
         .portfolio-items {
             top          : -30px;
             margin-bottom: 80px;
+            @include respond(alldevices) {
+                margin-bottom: 0;
+                top          : 0;
+            }
         }
     }
 }
@@ -229,6 +250,120 @@ a.post-edit-link {
     }
 }
 
+.mobile-nav {
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    width           : 100%;
+    height          : 100%;
+    z-index         : 100;
+    background-color: $white;
+    padding         : 80px 40px 40px;
+    display         : none;
+    @include respond(mobile) {
+        padding: 60px 30px 30px;
+    }
+
+    a.close-mob-nav {
+        display    : block;
+        width      : 80px;
+        height     : 80px;
+        position   : absolute;
+        top        : 0;
+        right      : 10px;
+        padding    : 30px;
+        line-height: 0;
+        @include respond(mobile) {
+            width  : 60px;
+            height : 60px;
+            padding: 20px;
+        }
+
+        svg {
+            width : 100%;
+            height: 100%;
+        }
+
+        &:after {
+            display: none;
+        }
+
+        &:active {
+            svg {
+                path {
+                    stroke: $blue;
+                }
+            }
+        }
+    }
+
+    a {
+        display       : inline-block;
+        font-size     : $s_bigger;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color         : $black;
+        line-height   : 80px;
+        height        : 80px;
+        @include respond(mobile) {
+            line-height: 60px;
+            height     : 60px;
+        }
+
+        &:active {
+            color: $blue;
+        }
+
+        &:after {
+            content          : "";
+            width            : 14px;
+            height           : 14px;
+            background-image : url("../images/arrow-right.png");
+            background-repeat: no-repeat;
+            background-size  : 14px;
+            display          : inline-block;
+            margin-left      : 10px;
+        }
+    }
+
+    .menu-main-menu-container {
+        ul {
+            li {
+                display   : block;
+                border-top: 1px solid $black;
+
+                &.menu-item-152 {
+                    display: none;
+                }
+
+                &.current-menu-item {
+                    a {
+                        color: $blue;
+
+                        &:after {
+                            background-image: url("../images/arrow-right-blue.png");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .inst {
+        position     : absolute;
+        bottom       : 40px;
+        left         : 40px;
+        border-top   : 1px solid $black;
+        border-bottom: 1px solid $black;
+        right        : 40px;
+        @include respond(mobile) {
+            left  : 30px;
+            right : 30px;
+            bottom: 30px;
+        }
+    }
+}
+
 .header {
     position: absolute;
     top     : 0;
@@ -239,6 +374,11 @@ a.post-edit-link {
     z-index : 20;
     @include transition-property(top);
     @include transition-duration(0.3s);
+    @include respond(mobile) {
+        left  : 30px;
+        right : 30px;
+        height: 60px;
+    }
 
     &.hidden {
         top: -80px;
@@ -258,6 +398,10 @@ a.post-edit-link {
     a {
         height     : 80px;
         line-height: 80px;
+        @include respond(mobile) {
+            height     : 60px;
+            line-height: 60px;
+        }
     }
 
     a.home {
@@ -272,10 +416,46 @@ a.post-edit-link {
         }
     }
 
+    a.show-mob-nav {
+        display : none;
+        height  : 80px;
+        width   : 80px;
+        padding : 30px;
+        position: absolute;
+        top     : 0;
+        right   : -30px;
+        @include respond(alldevices) {
+            display: block;
+        }
+        @include respond(mobile) {
+            width  : 60px;
+            height : 60px;
+            padding: 20px;
+            right  : -20px;
+        }
+
+        svg {
+            display: block;
+            width  : 100%;
+            height : 100%;
+        }
+
+        &:active {
+            svg {
+                line {
+                    stroke: $blue;
+                }
+            }
+        }
+    }
+
     .nav {
         float   : right;
         position: relative;
         z-index : 2;
+        @include respond(alldevices) {
+            display: none;
+        }
 
         ul {
             li {
@@ -330,6 +510,11 @@ a.more {
     border-bottom : 1px solid $black;
     text-transform: uppercase;
     overflow      : hidden;
+    @include respond(alldevices) {
+        height     : 60px;
+        line-height: 60px;
+        font-size  : $s_bigger;
+    }
     @include respond(desktop) {
         @include transition-property(color);
         @include transition-duration(0.2s);
@@ -343,6 +528,18 @@ a.more {
                 path {
                     stroke: $blue;
                 }
+            }
+        }
+    }
+
+    &:active {
+        color: $blue;
+
+        svg {
+            margin-left: 20px;
+
+            path {
+                stroke: $blue;
             }
         }
     }
@@ -362,6 +559,9 @@ a.more {
         top        : -1px;
         @include transition-property(margin-left);
         @include transition-duration(0.2s);
+        @include respond(alldevices) {
+            width: 16px;
+        }
     }
 
     &.no-borders {
@@ -424,6 +624,12 @@ a.more {
     padding-right: 40px;
     overflow     : hidden;
     margin-bottom: 80px;
+    @include respond(mobile) {
+        padding-left : 30px;
+        padding-right: 30px;
+        overflow     : hidden;
+        margin-bottom: 30px;
+    }
 
     .selfwork-item {
         overflow   : hidden;
@@ -432,6 +638,10 @@ a.more {
         padding-top: 40px;
         @include respond(bigdesktop) {
             padding-left: 25%;
+        }
+        @include respond(mobile) {
+            margin-top : 30px;
+            padding-top: 30px;
         }
 
         &:first-child {
@@ -456,6 +666,11 @@ a.more {
                     color: $blue;
                 }
             }
+            @include respond(alldevices) {
+                width    : 100%;
+                float    : none;
+                font-size: $s_medium;
+            }
         }
 
         a.more {
@@ -464,6 +679,10 @@ a.more {
             @include respond(desktop) {
                 @include transition-property(color);
                 @include transition-duration(0.2s);
+            }
+            @include respond(alldevices) {
+                font-size : $s_small;
+                margin-top: 10px;
             }
 
             svg {
@@ -480,6 +699,11 @@ a.more {
             display            : block;
             background-size    : cover;
             background-position: center;
+            @include respond(alldevices) {
+                width        : 100%;
+                float        : none;
+                margin-bottom: 20px;
+            }
         }
     }
 }
@@ -487,14 +711,26 @@ a.more {
 .portfolio-items {
     overflow     : hidden;
     position     : relative;
-    top          : -90px;
     padding-left : 40px;
     padding-right: 40px;
+    @include respond(desktop) {
+        top: -90px;
+    }
+    @include respond(mobile) {
+        padding-left : 30px;
+        padding-right: 30px;
+    }
 
     &.related {
         margin-top : 80px;
         top        : 0;
         padding-top: 0;
+        @include respond(tablets) {
+            margin-top: 80px;
+        }
+        @include respond(mobile) {
+            margin-top: 60px;
+        }
 
         .wrapper {
             padding-top : 40px;
@@ -503,9 +739,14 @@ a.more {
             margin-left : auto;
             margin-right: auto;
             overflow    : hidden;
-            padding-left: 21%;
             @include respond(bigdesktop) {
                 padding-left: 320px;
+            }
+            @include respond(desktop) {
+                padding-left: 21%;
+            }
+            @include respond(tablets) {
+                padding-top: 60px;
             }
 
             h2 {
@@ -515,6 +756,14 @@ a.more {
                 font-size     : $s_medium;
                 line-height   : 1.1;
                 text-transform: uppercase;
+                @include respond(alldevices) {
+                    position: relative;
+                    top     : auto;
+                    left    : auto;
+                }
+                @include respond(alldevices) {
+                    margin-bottom: 40px;
+                }
             }
         }
 
@@ -527,11 +776,21 @@ a.more {
             left            : 40px;
             right           : 40px;
             background-color: $black;
+            @include respond(mobile) {
+                left : 30px;
+                right: 30px;
+            }
+        }
+
+        .items {
+            overflow: hidden;
         }
 
         .portfolio-item,
         .post-item {
-            width: 30.2%;
+            @include respond(desktop) {
+                width: 30.2%;
+            }
 
             &:first-child {
                 margin-left: 0;
@@ -553,6 +812,24 @@ a.more {
                 }
             }
         }
+        @include respond(alldevices) {
+            margin-left: 0;
+        }
+        @include respond(alldevices) {
+            width: 48%;
+
+            &:nth-child(odd) {
+                float: left;
+            }
+
+            &:nth-child(even) {
+                float: right;
+            }
+
+            &:nth-child(2n+1) {
+                clear: left;
+            }
+        }
 
         a.p-item-title {
             margin-bottom : 30px;
@@ -566,6 +843,12 @@ a.more {
                 @include transition-property(color);
                 @include transition-duration(0.2s);
             }
+            @include respond(alldevices) {
+                margin-bottom: 15px;
+            }
+            @include respond(mobile) {
+                font-size: $s_bigger;
+            }
         }
 
         a.picture {
@@ -573,6 +856,9 @@ a.more {
             height     : 0;
             padding-top: 140%;
             overflow   : hidden;
+            @include respond(alldevices) {
+                margin-bottom: 10px;
+            }
         }
 
         a.more {
@@ -581,6 +867,10 @@ a.more {
             @include respond(desktop) {
                 @include transition-property(color);
                 @include transition-duration(0.2s);
+            }
+            @include respond(alldevices) {
+                margin-top: 10px;
+                font-size : $s_small;
             }
 
             svg {
@@ -601,6 +891,12 @@ a.more {
             margin-left   : auto;
             overflow      : hidden;
             padding-bottom: 40px;
+            @include respond(tablets) {
+                padding-top: 80px;
+            }
+            @include respond(mobile) {
+                padding-top: 60px;
+            }
 
             &:after {
                 content         : "";
@@ -611,6 +907,9 @@ a.more {
                 bottom          : 20px;
                 height          : 1px;
                 background-color: $black;
+                @include respond(tablets) {
+                    bottom: 40px;
+                }
             }
 
             &:before {
@@ -628,12 +927,24 @@ a.more {
                 float        : left;
                 width        : 30%;
                 padding-right: 60px;
+                @include respond(alldevices) {
+                    width       : 100%;
+                    float       : none;
+                    padding-left: 0;
+                }
+                @include respond(alldevices) {
+                    padding-bottom: 20px;
+                    padding-top   : 20px;
+                }
 
                 a.p-item-title {
                     display      : block;
                     font-size    : $s_subtitle;
                     height       : auto;
                     margin-bottom: 0;
+                    @include respond(alldevices) {
+                        width: 80%;
+                    }
                 }
             }
 
@@ -644,6 +955,14 @@ a.more {
                 overflow   : hidden;
                 float      : right;
                 display    : block;
+                @include respond(alldevices) {
+                    width      : 100%;
+                    float      : none;
+                    padding-top: 50%;
+                }
+                @include respond(tablets) {
+                    margin-bottom: 20px;
+                }
             }
         }
     }
@@ -660,6 +979,13 @@ a.more {
             margin-top : 60px;
             margin-left: -30px;
             padding-top: 60px;
+            @include respond(alldevices) {
+                margin-left: 0;
+            }
+            @include respond(mobile) {
+                margin-top : 30px;
+                padding-top: 30px;
+            }
 
             &:first-child {
                 margin-top: 0;
@@ -675,6 +1001,9 @@ a.more {
                     padding-left : 30%;
                     padding-right: 10%;
                 }
+                @include respond(alldevices) {
+                    max-width: 100%;
+                }
 
                 .items-wrapper {
                     overflow   : hidden;
@@ -684,6 +1013,9 @@ a.more {
                     @include respond(bigdesktop) {
                         width: 100%;
                         left : -10px;
+                    }
+                    @include respond(alldevices) {
+                        width: 100%;
                     }
 
                     .portfolio-item {}
@@ -700,6 +1032,14 @@ a.more {
     position     : relative;
     height       : 700px;
     overflow     : hidden;
+    @include respond(alldevices) {
+        height: auto;
+    }
+    @include respond(mobile) {
+        padding-left : 30px;
+        padding-right: 30px;
+        padding-top  : 30px;
+    }
 
     p {
         display: block;
@@ -708,6 +1048,12 @@ a.more {
             font-size     : $s_big;
             line-height   : 1.1;
             text-transform: uppercase;
+            @include respond(tablets) {
+                font-size: $s_big_small;
+            }
+            @include respond(mobile) {
+                font-size: $s_subtitle;
+            }
         }
 
         &.desc {
@@ -715,6 +1061,9 @@ a.more {
             line-height: 1.4;
             margin-top : 20px;
             max-width  : 600px;
+            @include respond(mobile) {
+                font-size: $s_bigger;
+            }
         }
     }
 
@@ -723,6 +1072,15 @@ a.more {
         left    : 40px;
         right   : 40px;
         bottom  : 0;
+        @include respond(alldevices) {
+            margin-top: 40px;
+        }
+        @include respond(alldevices) {
+            position: relative;
+            left    : auto;
+            right   : auto;
+            bottom  : auto;
+        }
     }
 }
 
@@ -731,9 +1089,21 @@ a.more {
     padding-right: 40px;
     padding-top  : 40px;
     margin-bottom: 80px;
+    @include respond(tablets) {
+        margin-top : 80px;
+        padding-top: 0;
+    }
+    @include respond(mobile) {
+        padding-left : 30px;
+        padding-right: 30px;
+        margin-bottom: 60px;
+    }
 
     .wrapper {
         padding-left: 25%;
+        @include respond(alldevices) {
+            padding-left: 0;
+        }
 
         .list {
             border-left   : 1px solid $black;
@@ -741,18 +1111,46 @@ a.more {
             width         : 980px;
             padding-bottom: 80px;
             overflow      : hidden;
+            @include respond(alldevices) {
+                padding-left: 0;
+                border-left : 0;
+                width       : 100%;
+            }
+            @include respond(tablets) {
+                padding-bottom: 40px;
+            }
+            @include respond(mobile) {
+                padding-bottom: 50px;
+            }
 
             h2 {
                 font-size     : $s_big;
                 line-height   : 1.1;
                 text-transform: uppercase;
                 margin-bottom : 80px;
+                @include respond(tablets) {
+                    font-size    : $s_big_small;
+                    margin-bottom: 40px;
+                }
+                @include respond(alldevices) {
+                    padding-right: 20%;
+                }
+                @include respond(mobile) {
+                    font-size    : $s_subtitle;
+                    margin-bottom: 30px;
+                }
             }
 
             ul {
                 overflow   : hidden;
                 margin-left: -30px;
                 margin-top : -40px;
+                @include respond(alldevices) {
+                    margin-left: 0;
+                }
+                @include respond(mobile) {
+                    margin-top: -20px;
+                }
 
                 li {
                     display    : block;
@@ -760,17 +1158,26 @@ a.more {
                     width      : 30%;
                     margin-left: 30px;
                     margin-top : 40px;
-
-                    &.large {
-                        width: 63.2%;
+                    @include respond(alldevices) {
+                        float      : none;
+                        width      : 100%;
+                        margin-left: 0;
                     }
-
-                    &:nth-child(2) {
-                        clear: right;
+                    @include respond(mobile) {
+                        margin-top: 20px;
                     }
+                    @include respond(desktop) {
+                        &.large {
+                            width: 63.2%;
+                        }
 
-                    &:nth-child(3) {
-                        clear: left;
+                        &:nth-child(2) {
+                            clear: right;
+                        }
+
+                        &:nth-child(3) {
+                            clear: left;
+                        }
                     }
 
                     a {
@@ -789,6 +1196,10 @@ a.more {
                             padding-top        : 430px;
                             background-size    : cover;
                             background-position: center;
+                            @include respond(mobile) {
+                                height     : 220px;
+                                padding-top: 0;
+                            }
                         }
 
                         span {
@@ -835,12 +1246,22 @@ a.more {
     padding-top     : 80px;
     padding-left    : 40px;
     padding-right   : 40px;
+    @include respond(mobile) {
+        padding-top  : 60px;
+        padding-left : 30px;
+        padding-right: 30px;
+    }
 
     a.more {
         position: absolute;
         left    : 40px;
         bottom  : 80px;
         right   : 40px;
+        @include respond(mobile) {
+            left  : 30px;
+            bottom: 60px;
+            right : 30px;
+        }
     }
 
     .wrapper {
@@ -849,6 +1270,15 @@ a.more {
         margin-left   : auto;
         margin-right  : auto;
         padding-bottom: 250px;
+        @include respond(alldevices) {
+            width: 100%;
+        }
+        @include respond(tablets) {
+            padding-bottom: 210px;
+        }
+        @include respond(mobile) {
+            padding-bottom: 180px;
+        }
 
         &:after {
             content         : "";
@@ -859,10 +1289,23 @@ a.more {
             bottom          : 0;
             right           : 25%;
             background-color: white;
+            @include respond(alldevices) {
+                right: 0;
+                top  : 0;
+            }
+            @include respond(mobile) {
+                bottom: 60px;
+            }
+            @include respond(tablets) {
+                bottom: 80px;
+            }
         }
 
         .subtitle {
             margin-bottom: 80px;
+            @include respond(mobile) {
+                margin-bottom: 60px;
+            }
 
             h2,
             span {
@@ -881,17 +1324,31 @@ a.more {
             h2 {
                 font-size    : $s_big;
                 padding-right: 24%;
+                @include respond(tablets) {
+                    font-size    : $s_big_small;
+                    padding-right: 40px;
+                }
+                @include respond(mobile) {
+                    font-size    : $s_subtitle;
+                    padding-right: 30px;
+                }
             }
         }
 
         .list {
             padding-right: 50px;
+            @include respond(alldevices) {
+                padding-right: 0;
+            }
 
             ul {
                 li {
                     display   : block;
                     position  : relative;
                     margin-top: 80px;
+                    @include respond(alldevices) {
+                        margin-top: 40px;
+                    }
 
                     &:first-child {
                         margin-top: 0;
@@ -902,6 +1359,9 @@ a.more {
                         overflow     : hidden;
                         padding-right: 25%;
                         position     : relative;
+                        @include respond(alldevices) {
+                            padding-right: 0;
+                        }
 
                         .picture {
                             height             : 0;
@@ -923,6 +1383,14 @@ a.more {
                             text-align  : left;
                             padding-left: 70px;
                             font-style  : italic;
+                            @include respond(alldevices) {
+                                position    : relative;
+                                left        : auto;
+                                top         : auto;
+                                padding-left: 0;
+                                font-size   : $s_small;
+                                margin-top  : 10px;
+                            }
                         }
                     }
                 }
@@ -934,18 +1402,38 @@ a.more {
 .featured-news {
     padding-left: 25%;
     padding-top : 30px;
+    @include respond(alldevices) {
+        padding-left: 0;
+    }
+    @include respond(mobile) {
+        padding-top: 60px;
+    }
 
     .wrapper {
         border-left  : 1px solid $black;
         padding-left : 30px;
         padding-right: 30px;
         padding-top  : 80px;
+        @include respond(alldevices) {
+            border-left: 0;
+        }
+        @include respond(mobile) {
+            padding-top: 0;
+        }
 
         h2 {
             font-size     : $s_big;
             line-height   : 1.1;
             text-transform: uppercase;
             margin-bottom : 80px;
+            @include respond(tablets) {
+                font-size    : $s_big_small;
+                margin-bottom: 40px;
+            }
+            @include respond(mobile) {
+                font-size    : $s_subtitle;
+                margin-bottom: 40px;
+            }
         }
 
         a.no-borders {
@@ -955,16 +1443,33 @@ a.more {
 
         .posts {
             margin-bottom: 80px;
+            @include respond(tablets) {
+                margin-bottom: 40px;
+            }
+            @include respond(mobile) {
+                margin-bottom: 30px;
+            }
 
             ul {
-                overflow   : hidden;
-                margin-left: -30px;
+                overflow: hidden;
+                @include respond(desktop) {
+                    margin-left: -30px;
+                }
 
                 li {
-                    display    : block;
-                    width      : 30.1%;
-                    float      : left;
-                    margin-left: 30px;
+                    display: block;
+                    @include respond(desktop) {
+                        width      : 30.1%;
+                        float      : left;
+                        margin-left: 30px;
+                    }
+                    @include respond(alldevices) {
+                        margin-top: 40px;
+
+                        &:first-child {
+                            margin-top: 0;
+                        }
+                    }
                 }
             }
         }
@@ -999,6 +1504,9 @@ a.more {
         font-size     : $s_medium;
         line-height   : 1.2;
         text-transform: uppercase;
+        @include respond(mobile) {
+            font-size: $s_bigger;
+        }
 
         &:active {
             color: $blue;
@@ -1047,6 +1555,9 @@ a.more {
     .more {
         margin-top: 20px;
         position  : relative;
+        @include respond(mobile) {
+            margin-top: 10px;
+        }
 
         a {
             line-height: 30px;
@@ -1085,35 +1596,59 @@ a.more {
 }
 
 .page-title {
-    padding-left  : 40px;
-    padding-right : 40px;
-    position      : relative;
-    padding-top   : 40px;
-    padding-bottom: 120px;
-
-    &:before {
-        display         : block;
-        content         : "";
-        position        : absolute;
-        right           : 40px;
-        height          : 100%;
-        top             : 0;
-        width           : 1px;
-        background-color: $black;
+    padding : 40px 40px 120px;
+    position: relative;
+    @include respond(alldevices) {
+        padding-bottom: 0;
+    }
+    @include respond(mobile) {
+        padding: 30px 30px 70px;
     }
 
     h1 {
         font-size     : $s_big;
-        line-height   : 1;
+        line-height   : 1.1;
         text-transform: uppercase;
-        padding-right : 25%;
+        @include respond(tablets) {
+            font-size     : $s_big_small;
+            padding-right : 40px;
+            padding-bottom: 80px;
+        }
+        @include respond(desktop) {
+            padding-right: 25%;
+        }
+        @include respond(mobile) {
+            font-size    : $s_subtitle;
+            padding-right: 30px;
+        }
     }
 
     &.self {
-        padding-right: 25%;
+        @include respond(desktop) {
+            padding-right: 25%;
+        }
+        @include respond(tablets) {
+            padding-bottom: 80px;
+        }
+        @include respond(mobile) {
+            padding-bottom: 100px;
+        }
 
         &:before {
-            right: 25%;
+            display         : block;
+            content         : "";
+            position        : absolute;
+            right           : 40px;
+            height          : 100%;
+            top             : 0;
+            width           : 1px;
+            background-color: $black;
+            @include respond(tablets) {
+                right: 40px;
+            }
+            @include respond(mobile) {
+                right: 30px;
+            }
         }
 
         &:after {
@@ -1125,28 +1660,46 @@ a.more {
             height          : 1px;
             background-color: $black;
             bottom          : 30px;
+            @include respond(tablets) {
+                bottom: 40px;
+            }
+            @include respond(mobile) {
+                bottom: 30px;
+                left  : 30px;
+                right : 30px;
+            }
         }
     }
 }
 
 .filters {
-    padding-left : 40px;
-    padding-right: 80px;
-    padding-top  : 40px;
-    position     : relative;
-    top          : -68px;
-    overflow     : hidden;
-    z-index      : 10;
+    padding-top: 40px;
+    position   : relative;
+    overflow   : hidden;
+    z-index    : 10;
+    @include respond(tablets) {
+        padding-left: 40px;
+        padding-top : 0;
+    }
+    @include respond(mobile) {
+        padding-left: 30px;
+        padding-top : 0;
+    }
+    @include respond(desktop) {
+        padding-left : 40px;
+        padding-right: 80px;
+        top          : -68px;
 
-    &:before {
-        display         : block;
-        content         : "";
-        height          : 1px;
-        position        : absolute;
-        left            : 40px;
-        right           : 40px;
-        top             : 67px;
-        background-color: $black;
+        &:before {
+            display         : block;
+            content         : "";
+            height          : 1px;
+            position        : absolute;
+            left            : 40px;
+            right           : 40px;
+            top             : 67px;
+            background-color: $black;
+        }
     }
 
     a,
@@ -1158,14 +1711,28 @@ a.more {
         display       : inline-block;
         padding-bottom: 10px;
         line-height   : 1;
+        @include respond(alldevices) {
+            font-size: $s_small;
+        }
     }
 
     p {
-        float: left;
+        @include respond(desktop) {
+            float: left;
+        }
     }
 
     ul {
-        float: right;
+        @include respond(desktop) {
+            float: right;
+        }
+        @include respond(alldevices) {
+            list-style-type: none;
+            white-space    : nowrap;
+            overflow-x     : auto;
+            margin-top     : 20px;
+            border-bottom  : 1px solid $black;
+        }
 
         li {
             display     : block;
@@ -1173,6 +1740,12 @@ a.more {
             margin-left : 40px;
             padding-left: 40px;
             border-left : 1px solid $black;
+            @include respond(alldevices) {
+                display     : inline-block;
+                float       : none;
+                margin-left : 20px;
+                padding-left: 20px;
+            }
 
             &.active {
                 a {
@@ -1231,6 +1804,14 @@ a.more {
 
         &:after {
             bottom: 30px;
+            @include respond(tablets) {
+                bottom       : 50%;
+                margin-bottom: -255px;
+            }
+            @include respond(mobile) {
+                bottom       : 50%;
+                margin-bottom: -150px;
+            }
         }
 
         .wrapper {
@@ -1241,14 +1822,24 @@ a.more {
 
             .more-button,
             .text {
-                width   : 50%;
-                float   : left;
                 position: relative;
+                @include respond(desktop) {
+                    width: 50%;
+                    float: left;
+                }
             }
 
             .text {
                 padding-top   : 140px;
                 padding-bottom: 140px;
+                @include respond(tablets) {
+                    padding-top   : 40px;
+                    padding-bottom: 0;
+                }
+                @include respond(mobile) {
+                    padding-top   : 40px;
+                    padding-bottom: 0;
+                }
 
                 p {
                     display: block;
@@ -1257,6 +1848,12 @@ a.more {
                         font-size     : $s_big;
                         line-height   : 1.1;
                         text-transform: uppercase;
+                        @include respond(tablets) {
+                            font-size: $s_big_small;
+                        }
+                        @include respond(mobile) {
+                            font-size: $s_subtitle;
+                        }
                     }
 
                     &:nth-child(2) {
@@ -1264,12 +1861,21 @@ a.more {
                         line-height: 1.3;
                         font-size  : $s_medium;
                         margin-top : 30px;
+                        @include respond(mobile) {
+                            font-size : $s_bigger;
+                            margin-top: 10px;
+                        }
                     }
                 }
             }
 
             .more-button {
                 text-align: center;
+                @include respond(alldevices) {
+                    height     : 0 !important;
+                    position   : relative;
+                    padding-top: 84%;
+                }
 
                 &:before {
                     content            : "";
@@ -1284,23 +1890,47 @@ a.more {
                     background-repeat  : no-repeat;
                     background-position: top;
                     z-index            : 1;
+                    @include respond(alldevices) {
+                        right: 0;
+                        left : 0;
+                    }
                 }
-
-                &:after {
-                    content         : "";
-                    display         : block;
-                    height          : 100%;
-                    position        : absolute;
-                    left            : 0;
-                    top             : 0;
-                    width           : 1px;
-                    background-color: $black;
-                    z-index         : 2;
+                @include respond(desktop) {
+                    &:after {
+                        content         : "";
+                        display         : block;
+                        height          : 100%;
+                        position        : absolute;
+                        left            : 0;
+                        top             : 0;
+                        width           : 1px;
+                        background-color: $black;
+                        z-index         : 2;
+                    }
                 }
 
                 a {
                     position: relative;
                     z-index : 2;
+                }
+
+                .table {
+                    @include respond(alldevices) {
+                        position: absolute;
+                        top     : 0;
+
+                        &:before {
+                            content         : "";
+                            display         : block;
+                            height          : 1px;
+                            background-color: $black;
+                            left            : 0;
+                            right           : 0;
+                            top             : 30%;
+                            position        : absolute;
+                            z-index         : 3;
+                        }
+                    }
                 }
             }
         }
@@ -1312,21 +1942,40 @@ a.more {
         padding-right: 40px;
         margin-top   : 60px;
         display      : none;
+        @include respond(alldevices) {
+            padding-left: 40%;
+            margin-top  : -13%;
+            position    : relative;
+            z-index     : 4;
+        }
 
         p {
-            float      : left;
             display    : inline-block;
             line-height: 60px;
             height     : 60px;
             font-size  : $s_medium;
+            @include respond(desktop) {
+                float: left;
+            }
         }
 
         ul {
-            float: right;
+            @include respond(desktop) {
+                float: right;
+            }
 
             li {
                 float      : left;
                 margin-left: 50px;
+                @include respond(alldevices) {
+                    margin-left: 0;
+                    float      : none;
+                    margin-top : 20px;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
 
                 &:first-child {
                     margin-left: 0;
@@ -1335,6 +1984,9 @@ a.more {
                 img {
                     height : 60px;
                     display: inline-block;
+                    @include respond(alldevices) {
+                        height: 40px;
+                    }
                 }
             }
         }
@@ -1347,6 +1999,11 @@ a.more {
         padding-left : 40px;
         padding-right: 40px;
         position     : relative;
+        @include respond(alldevices) {
+            padding-left: 40%;
+            margin-top  : 40px;
+            padding-top : 40px;
+        }
 
         &:before {
             content         : "";
@@ -1357,17 +2014,26 @@ a.more {
             right           : 40px;
             top             : 0;
             background-color: $black;
+            @include respond(alldevices) {
+                left : 30px;
+                right: 30px;
+            }
         }
 
         .links,
         .logo {
-            width: 50%;
-            float: left;
+            @include respond(desktop) {
+                width: 50%;
+                float: left;
+            }
         }
 
         .logo {
             svg {
                 width: 120px;
+            }
+            @include respond(alldevices) {
+                display: none;
             }
         }
 
@@ -1386,14 +2052,19 @@ a.more {
 
             .nav,
             .social {
-                width: 50%;
-                float: left;
+                @include respond(desktop) {
+                    width: 50%;
+                    float: left;
+                }
             }
 
             .nav {
                 ul {
                     li {
                         margin-top: 30px;
+                        @include respond(mobile) {
+                            margin-top: 15px;
+                        }
 
                         &:first-child {
                             margin-top: 0;
@@ -1414,6 +2085,10 @@ a.more {
             }
 
             .social {
+                @include respond(alldevices) {
+                    margin-top: 40px;
+                }
+
                 a {
                     text-decoration: underline;
                 }
@@ -1423,14 +2098,22 @@ a.more {
 
                     &.address {
                         margin-top: 130px;
+                        @include respond(alldevices) {
+                            margin-top: 40px;
+                        }
                     }
                 }
             }
         }
 
         .copyright {
-            position: relative;
-            top     : -10px;
+            @include respond(alldevices) {
+                margin-top: 40px;
+            }
+            @include respond(desktop) {
+                position: relative;
+                top     : -10px;
+            }
 
             p {
                 letter-spacing: 1px;
@@ -1459,35 +2142,52 @@ a.more {
     position     : relative;
     padding-left : 40px;
     padding-right: 40px;
-
-    &:after {
-        content         : "";
-        display         : block;
-        position        : absolute;
-        left            : 40px;
-        bottom          : 30px;
-        right           : 40px;
-        height          : 1px;
-        background-color: $black;
+    @include respond(desktop) {
+        &:after {
+            content         : "";
+            display         : block;
+            position        : absolute;
+            left            : 40px;
+            bottom          : 30px;
+            right           : 40px;
+            height          : 1px;
+            background-color: $black;
+        }
+    }
+    @include respond(alldevices) {
+        height: auto !important;
+    }
+    @include respond(tablets) {
+        padding-top: 40px;
+    }
+    @include respond(mobile) {
+        padding-top  : 30px;
+        padding-left : 30px;
+        padding-right: 30px;
     }
 
     .back,
     .title {
-        float: left;
+        @include respond(desktop) {
+            float: left;
+        }
     }
 
     .back {
-        width       : 25%;
-        height      : 100%;
-        text-align  : center;
-        border-right: 1px solid $black;
+        @include respond(desktop) {
+            width       : 25%;
+            height      : 100%;
+            border-right: 1px solid $black;
+            text-align  : center;
+        }
 
         a {
             display : inline-block;
-            height  : 30px;
             position: relative;
-            top     : -20px;
             @include respond(desktop) {
+                top   : -20px;
+                height: 30px;
+
                 &:hover {
                     span {
                         color: $blue;
@@ -1506,6 +2206,9 @@ a.more {
                 line-height   : 30px;
                 font-size     : $s_bigger;
                 text-transform: uppercase;
+                @include respond(mobile) {
+                    font-size: $s_small;
+                }
             }
 
             svg {
@@ -1513,8 +2216,13 @@ a.more {
                 height      : 100%;
                 width       : 14px;
                 position    : relative;
-                top         : 8px;
                 margin-right: 5px;
+                @include respond(desktop) {
+                    top: 8px;
+                }
+                @include respond(mobile) {
+                    width: 10px;
+                }
 
                 path {
                     stroke: $black;
@@ -1524,16 +2232,38 @@ a.more {
     }
 
     .title {
-        width         : 75%;
-        padding-left  : 40px;
         padding-top   : 40px;
         padding-bottom: 60px;
+        @include respond(desktop) {
+            padding-left: 40px;
+            width       : 75%;
+        }
+        @include respond(alldevices) {
+            border-top: 1px solid $black;
+        }
+        @include respond(tablets) {
+            margin-top    : 40px;
+            padding-bottom: 80px;
+        }
+        @include respond(mobile) {
+            margin-top    : 60px;
+            padding-bottom: 60px;
+        }
 
         h1 {
             text-transform: uppercase;
             line-height   : 1.1;
             font-size     : $s_big;
             max-width     : 980px;
+            @include respond(tablets) {
+                font-size: $s_big_small;
+            }
+            @include respond(mobile) {
+                font-size: $s_subtitle;
+            }
+            @include respond(alldevices) {
+                width: 70%;
+            }
         }
     }
 }
@@ -1544,6 +2274,10 @@ a.more {
     @include respond(bigdesktop) {
         background-color: rgba($black,0.06);
     }
+    @include respond(mobile) {
+        padding-left : 30px;
+        padding-right: 30px;
+    }
 
     img {
         display     : block;
@@ -1553,11 +2287,14 @@ a.more {
         @include respond(bigdesktop) {
             max-width: 1400px;
         }
+        @include respond(alldevices) {
+            border-top : 1px solid $black;
+            padding-top: 20px;
+        }
     }
 }
 
 .project-details {
-    padding-left : 25%;
     padding-right: 40px;
     max-width    : 1400px;
     margin-left  : auto;
@@ -1565,6 +2302,16 @@ a.more {
     @include respond(bigdesktop) {
         padding-right: 0;
         padding-left : 0;
+    }
+    @include respond(desktop) {
+        padding-left: 25%;
+    }
+    @include respond(tablets) {
+        padding-left: 40px;
+    }
+    @include respond(mobile) {
+        padding-left : 30px;
+        padding-right: 30px;
     }
 
     li,
@@ -1577,47 +2324,62 @@ a.more {
         @include respond(bigdesktop) {
             padding-left: 25%;
         }
+        @include respond(alldevices) {
+            margin-top: 20px;
+        }
 
         li {
             overflow      : hidden;
             border-top    : 1px solid $black;
-            padding-left  : 30px;
             display       : block;
             line-height   : 1.2;
             position      : relative;
             padding-top   : 12px;
             padding-bottom: 12px;
+            @include respond(desktop) {
+                padding-left: 30px;
 
-            &:first-child {
-                border-top: 0;
-            }
+                &:first-child {
+                    border-top: 0;
+                }
 
-            &:before {
-                content         : "";
-                display         : block;
-                width           : 1px;
-                height          : 100%;
-                position        : absolute;
-                left            : 30px;
-                top             : 0;
-                background-color: $black;
+                &:before {
+                    content         : "";
+                    display         : block;
+                    width           : 1px;
+                    height          : 100%;
+                    position        : absolute;
+                    left            : 30px;
+                    top             : 0;
+                    background-color: $black;
+                }
             }
 
             p {
                 display: block;
                 float  : left;
-
-                &:nth-child(1) {
-                    width       : 20%;
-                    padding-left: 20px;
+                @include respond(alldevices) {
+                    width: 50%;
                 }
+                @include respond(desktop) {
+                    &:nth-child(1) {
+                        width       : 20%;
+                        padding-left: 20px;
+                    }
 
-                &:nth-child(2) {
-                    width: 80%;
+                    &:nth-child(2) {
+                        width: 80%;
+                    }
                 }
             }
 
             ul {
+                @include respond(alldevices) {
+                    margin-top: 0;
+                    width     : 50%;
+                    float     : left;
+                }
+
                 li {
                     display: inline-block;
                     border : 0;
@@ -1649,7 +2411,6 @@ img.lazy {
 
 .post-content {
     margin-top   : 80px;
-    padding-left : 25%;
     padding-right: 40px;
     max-width    : 1400px;
     margin-left  : auto;
@@ -1657,6 +2418,17 @@ img.lazy {
     @include respond(bigdesktop) {
         padding-right: 10%;
         padding-left : 10%;
+    }
+    @include respond(desktop) {
+        padding-left: 25%;
+    }
+    @include respond(tablets) {
+        padding-left: 40px;
+    }
+    @include respond(mobile) {
+        padding-left : 30px;
+        padding-right: 30px;
+        margin-top   : 60px;
     }
 
     .block {
@@ -1668,7 +2440,9 @@ img.lazy {
 
         .subtitle,
         .text {
-            max-width: 600px;
+            @include respond(desktop) {
+                max-width: 600px;
+            }
         }
 
         .video {
@@ -1693,6 +2467,9 @@ img.lazy {
                 font-size     : $s_subtitle;
                 line-height   : 1.2;
                 text-transform: uppercase;
+                @include respond(mobile) {
+                    font-size: $s_medium;
+                }
             }
         }
 
@@ -1731,21 +2508,29 @@ img.lazy {
         }
 
         .gallery {
-            overflow   : hidden;
-            margin-left: -30px;
+            overflow: hidden;
+            @include respond(desktop) {
+                margin-left: -30px;
+            }
 
             .image {
-                display       : block;
-                float         : left;
-                width         : 46.7%;
-                margin-left   : 30px;
-                margin-top    : 30px;
-                padding-bottom: 30px;
+                display: block;
+                @include respond(alldevices) {
+                    margin-top    : 10px;
+                    padding-bottom: 10px;
+                }
+                @include respond(desktop) {
+                    margin-top    : 30px;
+                    padding-bottom: 30px;
+                    float         : left;
+                    width         : 46.7%;
+                    margin-left   : 30px;
 
-                &:nth-child(3n) {
-                    clear: left;
-                    width: 100%;
-                    float: none;
+                    &:nth-child(3n) {
+                        clear: left;
+                        width: 100%;
+                        float: none;
+                    }
                 }
 
                 img {
@@ -1767,20 +2552,30 @@ img.lazy {
 .contact-wrapper {
     padding-left : 40px;
     padding-right: 40px;
-    height       : 100%;
     height       : 700px;
+    @include respond(alldevices) {
+        height: auto;
+    }
+    @include respond(mobile) {
+        padding-left : 30px;
+        padding-right: 30px;
+    }
 
     .contact-info,
     .contact-title {
-        float   : left;
-        height  : 100%;
         position: relative;
+        @include respond(desktop) {
+            float : left;
+            height: 100%;
+        }
     }
 
     .contact-title {
-        width        : 75%;
-        padding-top  : 40px;
-        padding-right: 25%;
+        padding-top: 40px;
+        @include respond(desktop) {
+            width        : 75%;
+            padding-right: 25%;
+        }
 
         a {
             color: $black;
@@ -1793,26 +2588,47 @@ img.lazy {
                 font-size     : $s_big;
                 line-height   : 1.1;
                 text-transform: uppercase;
+                @include respond(tablets) {
+                    font-size: $s_big_small;
+                }
+                @include respond(mobile) {
+                    font-size: $s_subtitle;
+                }
             }
 
             &:nth-child(2) {
                 font-size  : $s_medium;
                 line-height: 1.3;
                 margin-top : 20px;
+                @include respond(mobile) {
+                    margin-top: 10px;
+                    font-size : $s_bigger;
+                }
             }
         }
 
         .offices {
             overflow: hidden;
-            position: absolute;
-            left    : 0;
-            bottom  : 40px;
+            @include respond(desktop) {
+                position: absolute;
+                left    : 0;
+                bottom  : 40px;
+            }
+            @include respond(tablets) {
+                margin-top: 80px;
+            }
+            @include respond(mobile) {
+                margin-top: 60px;
+            }
 
             .single-office {
                 span {
                     font-size  : $s_medium;
                     display    : block;
                     line-height: 1.1;
+                    @include respond(mobile) {
+                        font-size: $s_bigger;
+                    }
                 }
 
                 .text {
@@ -1822,6 +2638,9 @@ img.lazy {
                         font-size     : $s_subtitle;
                         margin-top    : 0;
                         text-transform: uppercase;
+                        @include respond(alldevices) {
+                            font-size: $s_bigger;
+                        }
                     }
                 }
             }
@@ -1829,8 +2648,21 @@ img.lazy {
     }
 
     .contact-info {
-        width      : 25%;
-        border-left: 1px solid $black;
+        @include respond(desktop) {
+            width      : 25%;
+            border-left: 1px solid $black;
+        }
+        @include respond(alldevices) {
+            padding-top: 100%;
+        }
+        @include respond(tablets) {
+            margin-top: 80px;
+            border-top: 1px solid $black;
+        }
+        @include respond(mobile) {
+            margin-top: 60px;
+            border-top: 1px solid $black;
+        }
 
         .map {
             position: absolute;
@@ -1898,6 +2730,11 @@ img.lazy {
     color        : $white;
     position     : relative;
     z-index      : 2;
+    @include respond(mobile) {
+        padding-left : 30px;
+        padding-top  : 30px;
+        padding-right: 30px;
+    }
 
     .about-text {
         @include respond(bigdesktop) {
@@ -1907,18 +2744,40 @@ img.lazy {
             left        : -10%;
             position    : relative;
         }
+        @include respond(tablets) {
+            margin-bottom: 80px;
+        }
+        @include respond(mobile) {
+            margin-bottom: 50px;
+        }
 
         h1 {
             font-size     : $s_big;
             line-height   : 1.1;
             text-transform: uppercase;
             width         : 70%;
+            @include respond(tablets) {
+                width    : 100%;
+                font-size: $s_big_small;
+            }
+            @include respond(mobile) {
+                width    : 100%;
+                font-size: $s_subtitle;
+            }
         }
 
         .text {
-            overflow    : hidden;
-            column-count: 2;
-            margin-top  : 80px;
+            overflow  : hidden;
+            margin-top: 80px;
+            @include respond(tablets) {
+                margin-top: 40px;
+            }
+            @include respond(mobile) {
+                margin-top: 30px;
+            }
+            @include respond(desktop) {
+                column-count: 2;
+            }
 
             p {
                 display       : inline-block;
@@ -1927,6 +2786,12 @@ img.lazy {
                 margin-top    : 20px;
                 padding-right : 60px;
                 vertical-align: top;
+                @include respond(alldevices) {
+                    font-size: $s_bigger;
+                }
+                @include respond(alldevices) {
+                    padding-right: 0;
+                }
             }
         }
     }
@@ -1935,6 +2800,9 @@ img.lazy {
         padding-left: 20%;
         border-top  : 1px solid $white;
         @include respond(bigdesktop) {
+            padding-left: 0;
+        }
+        @include respond(alldevices) {
             padding-left: 0;
         }
 
@@ -1948,6 +2816,17 @@ img.lazy {
                 margin-left : auto;
                 margin-right: auto;
             }
+            @include respond(alldevices) {
+                border-left   : 0;
+                padding-left  : 0;
+                padding-bottom: 0;
+            }
+            @include respond(tablets) {
+                margin-top: 80px;
+            }
+            @include respond(mobile) {
+                margin-top: 60px;
+            }
 
             h2 {
                 font-size     : $s_big;
@@ -1956,12 +2835,49 @@ img.lazy {
                 width         : 70%;
                 padding-top   : 80px;
                 padding-bottom: 80px;
+                @include respond(tablets) {
+                    font-size: $s_big_small;
+                }
+                @include respond(mobile) {
+                    font-size: $s_subtitle;
+                }
+                @include respond(alldevices) {
+                    padding-top   : 0;
+                    padding-bottom: 0;
+                    width         : 100%;
+                }
             }
 
             .list {
                 margin-left: -30px;
                 margin-top : -60px;
                 overflow   : hidden;
+                position   : relative;
+                @include respond(alldevices) {
+                    margin-left : 0;
+                    padding-left: 30%;
+                    border-top  : 1px solid $white;
+                    margin-top  : 0;
+
+                    &:before {
+                        content         : "";
+                        display         : block;
+                        width           : 1px;
+                        top             : 0;
+                        bottom          : 0;
+                        position        : absolute;
+                        left            : 30%;
+                        background-color: $white;
+                    }
+                }
+                @include respond(tablets) {
+                    margin-top    : 40px;
+                    padding-bottom: 80px;
+                }
+                @include respond(mobile) {
+                    margin-top    : 30px;
+                    padding-bottom: 60px;
+                }
 
                 .person {
                     float      : left;
@@ -1972,6 +2888,19 @@ img.lazy {
                         &:nth-child(3n+1) {
                             clear: left;
                         }
+                    }
+                    @include respond(alldevices) {
+                        float      : none;
+                        width      : auto;
+                        margin-left: 0;
+                    }
+                    @include respond(tablets) {
+                        margin-top  : 50px;
+                        padding-left: 40px;
+                    }
+                    @include respond(mobile) {
+                        margin-top  : 50px;
+                        padding-left: 30px;
                     }
 
                     .picture {
@@ -2059,6 +2988,12 @@ img.lazy {
         text-align   : right;
         margin-bottom: 110px;
         border-top   : 0;
+        @include respond(mobile) {
+            margin-bottom: 60px;
+        }
+        @include respond(tablets) {
+            margin-bottom: 80px;
+        }
 
         svg {
             @include transform(rotate(180deg));

@@ -28,8 +28,8 @@ console_log($selfwork);
     ?>
 
       <div class="selfwork-item">
-        <a href="<?php echo get_the_permalink($p_id); ?>" class="p-item-title"><?php echo get_the_title($p_id); ?></a>
         <a href="<?php echo get_the_permalink($p_id); ?>" class="picture lazy" data-bg="<?php echo $pic['sizes']['large']; ?>"></a>
+        <a href="<?php echo get_the_permalink($p_id); ?>" class="p-item-title"><?php echo get_the_title($p_id); ?></a>
         <a href="<?php echo get_the_permalink($p_id); ?>" class="more no-borders">
           <span>Learn More</span>
           <?php echo $icons['arrow']; ?>

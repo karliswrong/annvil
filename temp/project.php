@@ -3,6 +3,13 @@
 
   include("vars.php");
 
+  if(isMobile()){
+    $columns  = 2;
+  }
+  else {
+    $columns = 3;
+  }
+
   $id = get_the_ID();
 
   $fields = get_fields();
@@ -25,7 +32,7 @@
           'post_status'            => 'publish',
           'post__not_in' => array($id),
           'order'            => 'RAND',
-          'posts_per_page'         => 3
+          'posts_per_page'         => $columns
       );
 
   } else {
@@ -36,7 +43,7 @@
         'post_status'            => 'publish',
         'post__not_in' => array($id),
         'order'            => 'RAND',
-        'posts_per_page'         => 3,
+        'posts_per_page'         => $columns,
         'tax_query' => array(
             array (
                 'taxonomy' => 'type',
@@ -125,38 +132,41 @@
 
   <div class="portfolio-items related">
 
-
       <div class="wrapper">
 
         <h2>See other<br>
           projects:</h2>
 
-        <?php
+          <div class="items">
 
-         $count = 0;
+            <?php
 
-          foreach ($related->posts as $p):
-            $p_id = $p->ID;
-            $pic = get_field('vertical_picture', $p_id);
-            ?>
+             $count = 0;
 
-            <div class="portfolio-item animate">
-                <a href="<?php echo get_the_permalink($p_id); ?>" class="p-item-title">
-                  <div class="table">
-                    <div class="cell bottom">
-                        <?php echo get_the_title($p_id); ?>
-                    </div>
-                  </div>
-                </a>
+              foreach ($related->posts as $p):
+                $p_id = $p->ID;
+                $pic = get_field('vertical_picture', $p_id);
+                ?>
 
-                <a href="<?php echo get_the_permalink($p_id); ?>" class="picture lazy" data-bg="<?php echo $pic['sizes']['large']; ?>"></a>
-                <a href="<?php echo get_the_permalink($p_id); ?>" class="more no-borders">
-                  <span>Learn More</span>
-                  <?php echo $icons['arrow']; ?>
-                </a>
-            </div>
+                <div class="portfolio-item animate">
+                    <a href="<?php echo get_the_permalink($p_id); ?>" class="p-item-title">
+                      <div class="table">
+                        <div class="cell bottom">
+                            <?php echo get_the_title($p_id); ?>
+                        </div>
+                      </div>
+                    </a>
 
-        <?php endforeach; ?>
+                    <a href="<?php echo get_the_permalink($p_id); ?>" class="picture lazy" data-bg="<?php echo $pic['sizes']['large']; ?>"></a>
+                    <a href="<?php echo get_the_permalink($p_id); ?>" class="more no-borders">
+                      <span>Learn More</span>
+                      <?php echo $icons['arrow']; ?>
+                    </a>
+                </div>
+
+            <?php endforeach; ?>
+
+          </div>
 
       </div>
 

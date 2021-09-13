@@ -43,11 +43,29 @@ include("temp/vars.php");
 
 </div>
 
+<div class="mobile-nav">
+
+	<a href="#" class="close-mob-nav">
+		<?php echo $icons['close']; ?>
+	</a>
+
+	<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+
+	<div class="inst">
+			<a href="<?php echo $fields_options['instaram_url']; ?>" target="_blank">Our Instagram</a>
+	</div>
+
+
+</div>
+
 <div class="header">
 	<a class="home" href="<?php echo $site_url; ?>"><?php echo $icons['logo']; ?></a>
 	<div class="nav">
 		<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
 	</div>
+	<a href="#" class="show-mob-nav">
+		<?php echo $icons['hamburger']; ?>
+	</a>
 </div>
 
 <div id="scroll">

@@ -13,7 +13,14 @@ $portfolio = new WP_Query( $portfolio_args );
 
 $featured_portfolio = get_field('featured_portfolio');
 
-// console_log($portfolio);
+if(isMobile()){
+  $columns  = 2;
+}
+else {
+  $columns = 3;
+}
+
+console_log($columns);
 
 ?>
 
@@ -70,7 +77,7 @@ $featured_portfolio = get_field('featured_portfolio');
 
           <?php if ($p_id != $featured_portfolio): ?>
 
-            <?php if ($count % 3 == 0) { ?>
+            <?php if ($count % $columns == 0) { ?>
               <div class="group">
                 <div class="group-wrapper">
 
@@ -100,7 +107,7 @@ $featured_portfolio = get_field('featured_portfolio');
 
               <?php $count++; ?>
 
-            <?php if ($count % 3 == 0) { ?>
+            <?php if ($count % $columns == 0) { ?>
               </div>
               </div>
               </div>
