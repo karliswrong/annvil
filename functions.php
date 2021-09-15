@@ -26,7 +26,8 @@ function console_log($output, $with_script_tags = true) {
 
 // Menus
 register_nav_menus( array(
-  'main-menu' => 'main-menu',
+  'header-menu' => 'header-menu',
+  'footer-menu' => 'footer-menu',
 ));
 
 // Login & admin style

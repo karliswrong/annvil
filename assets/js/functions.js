@@ -7,7 +7,7 @@ $.fn.isInViewport = function() {
   if (w < 1024) {
     var elementTop = $(this).offset().top + $(window).height() / 2;
   } else {
-    var elementTop = $(this).offset().top + $(window).height();
+    var elementTop = $(this).offset().top + $(window).height() / 2;
   }
 
   var elementBottom = elementTop + $(this).outerHeight();
@@ -37,6 +37,8 @@ function animateIn(type) {
 
       $svg.drawsvg('animate');
 
+      $(".isAnimate").addClass("show");
+
     }
 
     anim_1 = false;
@@ -47,14 +49,7 @@ function animateIn(type) {
     if (anim_2) {
       console.log("show");
 
-      $(".fade-in").each(function(i) {
-        var me = $(this);
-
-        var int = setInterval(function() {
-          me.addClass("show");
-        }, 500 * i);
-
-      });
+      $(".isAnimate").addClass("show");
 
     }
 

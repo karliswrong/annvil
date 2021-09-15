@@ -51,7 +51,7 @@ console_log($news->posts);
 
   <div class="portfolio-items">
 
-    <div class="small-items">
+    <div class="small-items news">
 
       <?php
 

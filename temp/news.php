@@ -64,7 +64,7 @@ console_log($news->posts);
 
     <?php endif; ?>
 
-    <div class="small-items">
+    <div class="small-items news">
 
       <?php
 
@@ -96,7 +96,7 @@ console_log($news->posts);
 
             <?php } ?>
 
-              <div class="post-item">
+              <div class="post-item animate">
 
                 <?php if ($cover_picture) { ?>
                   <a href="<?php echo $link; ?>" target="<?php echo $target; ?>" class="cover">

@@ -19,6 +19,7 @@ include("temp/vars.php");
   <meta property="og:url" content="<?php echo $permalink; ?>" />
   <meta property="description" content="<?php echo esc_html( $meta_description ); ?>" />
   <meta property="og:description" content="<?php echo esc_html( $meta_description ); ?>" />
+	<meta property="og:image" content="<?php echo $fields_options['share_image']; ?>" />
 
 	<!-- JS -->
 	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/jquery-3.6.0.min.js"></script>
@@ -28,6 +29,17 @@ include("temp/vars.php");
 	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/smooth-scrollbar.min.js"></script>
 	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/functions.js<?php echo $version; ?>"></script>
 	<script type="text/javascript" src="<?php echo $website_template_url; ?>/assets/js/main.js<?php echo $version; ?>"></script>
+
+	<!-- FAV -->
+	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo $website_template_url; ?>/assets/images/misc/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $website_template_url; ?>/assets/images/misc/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $website_template_url; ?>/assets/images/misc/favicon-16x16.png">
+	<link rel="manifest" href="<?php echo $website_template_url; ?>/assets/images/misc/site.webmanifest">
+	<link rel="mask-icon" href="<?php echo $website_template_url; ?>/assets/images/misc/safari-pinned-tab.svg" color="#0042d4">
+	<link rel="shortcut icon" href="<?php echo $website_template_url; ?>/assets/images/misc/favicon.ico">
+	<meta name="msapplication-TileColor" content="#0042d4">
+	<meta name="msapplication-config" content="<?php echo $website_template_url; ?>/assets/images/misc/browserconfig.xml">
+	<meta name="theme-color" content="#0042D4">
 
 	<!-- Style -->
   <link rel="stylesheet" href="<?php echo $website_template_url; ?>/assets/css/main.css<?php echo $version; ?>" />
@@ -49,7 +61,7 @@ include("temp/vars.php");
 		<?php echo $icons['close']; ?>
 	</a>
 
-	<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+	<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 
 	<div class="inst">
 			<a href="<?php echo $fields_options['instaram_url']; ?>" target="_blank">Our Instagram</a>
@@ -61,7 +73,7 @@ include("temp/vars.php");
 <div class="header">
 	<a class="home" href="<?php echo $site_url; ?>"><?php echo $icons['logo']; ?></a>
 	<div class="nav">
-		<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+		<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 	</div>
 	<a href="#" class="show-mob-nav">
 		<?php echo $icons['hamburger']; ?>

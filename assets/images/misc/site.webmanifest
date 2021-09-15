@@ -1,0 +1,14 @@
+{
+    "name": "Annvil",
+    "short_name": "Annvil",
+    "icons": [
+        {
+            "src": "/assets/images/misc/android-chrome-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#0042D4",
+    "background_color": "#0042D4",
+    "display": "standalone"
+}

@@ -30,7 +30,7 @@ $team = get_field('team');
         <div class="list">
 
           <?php foreach ($team as $person): ?>
-            <div class="person fade-in">
+            <div class="person">
               <div class="picture lazy" data-bg="<?php echo $person['picture']['sizes']['large']; ?>"></div>
               <div class="name">
                 <p><?php echo $person['name']; ?></p>

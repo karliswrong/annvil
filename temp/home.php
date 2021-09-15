@@ -14,6 +14,10 @@
   <p class="slogan"><?php echo $fields['slogan']; ?></p>
   <p class="desc"><?php echo $fields['desc']; ?></p>
 
+  <div class="paklajs">
+    <img src="<?php echo $fields['paklajs']; ?>" alt="Annvil">
+  </div>
+
   <a href="#" class="more">
     <span>Have a deeper read</span>
     <?php echo $icons['arrow']; ?>
@@ -162,7 +166,7 @@
 
           <li>
 
-            <div class="post-item fade-in">
+            <div class="post-item animate">
 
               <?php if ($cover_picture) { ?>
                 <a href="<?php echo $link; ?>" target="<?php echo $target; ?>" class="cover">
