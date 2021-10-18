@@ -147,6 +147,14 @@ body {
         }
     }
 
+    &.page-template-portfolio {
+        .footer {
+            @include respond(desktop) {
+                margin-top: 50px !important;
+            }
+        }
+    }
+
     &.archive,
     &.page-template-news,
     &.page-template-portfolio {
@@ -1082,6 +1090,9 @@ a.more {
     }
 
     .portfolio-item {
+        @include respond(desktop) {
+            padding-bottom: 10px;
+        }
         @include respond(tablets) {
             margin-top: 40px;
         }
@@ -1153,7 +1164,7 @@ a.more {
         .group {
             border-top : 1px solid $black;
             overflow   : hidden;
-            margin-top : 60px;
+            margin-top : 50px;
             margin-left: -30px;
             padding-top: 60px;
             @include respond(alldevices) {
@@ -2677,16 +2688,11 @@ a.more {
 }
 
 img.lazy {
-    @include transition-property(visibility, opacity);
+    @include opacity(0);
+    @include transition-property(opacity);
     @include transition-duration(0.2s);
 
-    &.loading {
-        visibility: hidden;
-        @include opacity(0);
-    }
-
     &.loaded {
-        visibility: visible;
         @include opacity(1);
     }
 }
@@ -2698,8 +2704,10 @@ img.lazy {
     margin-left  : auto;
     margin-right : auto;
     @include respond(bigdesktop) {
-        padding-right: 10%;
-        padding-left : 10%;
+        position     : relative;
+        max-width    : 100%;
+        padding-left : 30%;
+        padding-right: 30%;
     }
     @include respond(desktop) {
         padding-left: 25%;

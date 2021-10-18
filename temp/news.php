@@ -52,7 +52,9 @@ console_log($news->posts);
     ?>
 
       <div class="portfolio-item featured">
-        <a href="<?php echo get_the_permalink($featured_post); ?>" class="picture lazy" data-bg="<?php echo $main_pic['sizes']['large']; ?>"></a>
+        <?php if ($main_pic): ?>
+          <a href="<?php echo get_the_permalink($featured_post); ?>" class="picture lazy" data-bg="<?php echo $main_pic['sizes']['large']; ?>"></a>
+        <?php endif; ?>
         <div class="title">
           <a href="<?php echo get_the_permalink($featured_post); ?>" class="p-item-title"><?php echo get_the_title($featured_post); ?></a>
           <a href="#" class="more no-borders">

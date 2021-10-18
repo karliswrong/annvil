@@ -96,7 +96,7 @@
       <p><?php the_field('project_name'); ?></p>
     </li>
     <li>
-      <p>Function</p>
+      <p>Value by Annvil</p>
       <p><?php the_field('function'); ?></p>
     </li>
     <li>

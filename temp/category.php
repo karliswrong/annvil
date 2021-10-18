@@ -78,7 +78,7 @@ console_log($news->posts);
                   <div class="items-wrapper">
             <?php } ?>
 
-              <div class="post-item">
+              <div class="post-item animate">
 
                 <?php if ($cover_picture) { ?>
                   <a href="<?php echo $link; ?>" target="<?php echo $target; ?>" class="cover">

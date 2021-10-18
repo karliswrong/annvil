@@ -58,6 +58,8 @@ function animateIn(type) {
 
 }
 
+lastScrollTop = 0;
+
 function Scroll(status) {
 
   var st = status.offset.y;

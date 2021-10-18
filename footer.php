@@ -58,11 +58,7 @@
       </div>
 
       <div class="social">
-        <p>Follow us on social media: <a href="#">Instagram</a></p>
-        <p class="address">Kalnciema street 37,<br>
-          Riga, Latvia, LV-1046<br>
-          Tel. (+371) 263 914 61<br>
-          <a href="#">info@annvil.lv</a></p>
+        <?php the_field('social','options'); ?>
       </div>
 
     </div>

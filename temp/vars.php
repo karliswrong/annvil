@@ -31,7 +31,7 @@ if ( $dev  ) {
 
 } else {
 
-  $version = '';
+  $version = '?1.0';
 
 }
 

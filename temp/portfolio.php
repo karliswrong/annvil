@@ -120,10 +120,6 @@ console_log($columns);
 
     </div>
 
-    </div>
-    </div>
-    </div>
-
   </div>
 
 <?php endif; ?>

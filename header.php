@@ -44,6 +44,19 @@ include("temp/vars.php");
 	<!-- Style -->
   <link rel="stylesheet" href="<?php echo $website_template_url; ?>/assets/css/main.css<?php echo $version; ?>" />
 
+	<script>
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-898952-34', 'annvil.lv');
+    ga('send', 'pageview');
+
+    LANG = 'en';
+  </script>
+
 
 </head>
 
@@ -64,7 +77,7 @@ include("temp/vars.php");
 	<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 
 	<div class="inst">
-			<a href="<?php echo $fields_options['instaram_url']; ?>" target="_blank">Our Instagram</a>
+			<a href="<?php echo $fields_options['instagram_url']; ?>" target="_blank">Our Instagram</a>
 	</div>
 
 
