@@ -36,7 +36,6 @@ console_log($portfolio->posts);
 </div>
 
 <div class="filters">
-  <p>Filter By:</p>
 
   <?php if ($all_portfolio_terms): ?>
     <ul>
@@ -66,7 +65,7 @@ console_log($portfolio->posts);
 
         foreach ($portfolio->posts as $p):
           $p_id = $p->ID;
-          $pic = get_field('vertical_picture', $p_id);
+          $picture = get_field('main_picture', $p_id);
           ?>
 
           <?php if ($p_id != $featured_portfolio): ?>
@@ -82,18 +81,27 @@ console_log($portfolio->posts);
 
               <div class="portfolio-item animate">
 
-                <a href="<?php echo get_the_permalink($p_id); ?>" class="p-item-title">
-                  <div class="table">
-                    <div class="cell bottom">
-                        <?php echo get_the_title($p_id); ?>
+                <a href="<?php echo get_the_permalink($p_id); ?>" >
+
+                  <div class="p-item-title">
+                    <div class="table">
+                      <div class="cell bottom">
+                          <?php echo get_the_title($p_id); ?>
+                      </div>
                     </div>
                   </div>
-                </a>
 
-                <a href="<?php echo get_the_permalink($p_id); ?>" class="picture lazy" data-bg="<?php echo $pic['sizes']['large']; ?>"></a>
-                <a href="<?php echo get_the_permalink($p_id); ?>" class="more no-borders">
-                  <span>Learn More</span>
-                  <?php echo $icons['arrow']; ?>
+                  <div class="picture">
+                    <div class="picture-wrapper">
+                      <img class="lazy" data-src="<?php echo $picture['sizes']['medium']; ?>">
+                    </div>
+                  </div>
+
+                  <div class="more no-borders">
+                    <span>Learn More</span>
+                    <?php echo $icons['arrow']; ?>
+                  </div>
+
                 </a>
 
               </div>

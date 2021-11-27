@@ -303,12 +303,6 @@ $(document).ready(function() {
     lat: lat,
 		lng: lng,
 		icon: "/wp-content/themes/annvil/assets/images/marker.png",
-		click: function() {
-			window.open(
-				'https://www.google.lv/maps/place/Tukuma+piens+,+AS/@56.9622643,23.1699902,17z/data=!3m1!4b1!4m5!3m4!1s0x46eefe3fbfe09019:0x31a4e53560f2274b!8m2!3d56.9622614!4d23.1721842?hl=en',
-				'_blank'
-			);
-		}
 	});
 
 map.panBy(0, -120);

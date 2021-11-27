@@ -15,7 +15,9 @@
   <p class="desc"><?php echo $fields['desc']; ?></p>
 
   <div class="paklajs">
-    <img src="<?php echo $fields['paklajs']; ?>" alt="Annvil">
+    <video id="vid_paklajs" class="lazy" data-src="<?php echo $fields['video']['url']; ?>" playsinline muted loop autoplay preload="metadata" >
+        <source type="<?php echo $fields['video']['mime_type']; ?>" data-src="<?php echo $fields['video']['url']; ?>" />
+    </video>
   </div>
 
   <a href="#" class="more">
@@ -47,7 +49,7 @@
               $picture = $p_fields['main_picture']['sizes']['large'];
             } else {
               $klass = "";
-              $picture = $p_fields['vertical_picture']['sizes']['large'];
+              $picture = $p_fields['main_picture']['sizes']['large'];
             }
 
           ?>
@@ -56,7 +58,12 @@
 
             <a href="<?php echo get_the_permalink($id); ?>">
 
-              <div class="picture lazy" data-bg="<?php echo $picture; ?>"></div>
+              <div class="picture">
+                <div class="picture-wrapper">
+                    <img class="lazy" data-src="<?php echo $picture; ?>">
+                </div>
+              </div>
+
               <span><?php echo get_the_title($id); ?></span>
 
             </a>
@@ -168,31 +175,35 @@
 
             <div class="post-item animate">
 
-              <?php if ($cover_picture) { ?>
-                <a href="<?php echo $link; ?>" target="<?php echo $target; ?>" class="cover">
-                    <img class="lazy" data-src="<?php echo $cover_picture; ?>" alt="<?php echo get_the_title($id); ?>" />
-                </a>
-              <?php } ?>
+              <a href="<?php echo $link; ?>" target="<?php echo $target; ?>">
 
-              <a href="<?php echo $link; ?>" target="<?php echo $target; ?>" class="post-title"><?php echo get_the_title($id); ?></a>
-
-              <?php if ($p_fields['article_name']): ?>
-                <div class="featured-in">
-                  <span>Featured in <a href="<?php echo $p_fields['article_link']; ?>" target="_blank"><?php echo $p_fields['article_name']; ?></a></span>
-                </div>
-              <?php endif; ?>
-
-              <?php if ($p_fields['intro']) { ?>
-                <p class="post-intro"><?php echo $p_fields['intro']; ?></p>
-              <?php } ?>
-
-              <div class="more">
-                <?php if ($p_fields['article_link']) { ?>
-                  <a href="<?php echo $link; ?>" target="_blank"><span>Link to article</span> <?php echo $icons['arrow']; ?></a>
-                <?php } else { ?>
-                  <a href="<?php echo $link; ?>"><span>Read Article</span> <?php echo $icons['arrow']; ?></a>
+                <?php if ($cover_picture) { ?>
+                  <div class="cover">
+                      <img class="lazy" data-src="<?php echo $cover_picture; ?>" alt="<?php echo get_the_title($id); ?>" />
+                  </div>
                 <?php } ?>
-              </div>
+
+                <div class="post-title"><?php echo get_the_title($id); ?></div>
+
+                <?php if ($p_fields['article_name']): ?>
+                  <div class="featured-in">
+                    <span>Featured in <?php echo $p_fields['article_name']; ?></span>
+                  </div>
+                <?php endif; ?>
+
+                <?php if ($p_fields['intro']) { ?>
+                  <p class="post-intro"><?php echo $p_fields['intro']; ?></p>
+                <?php } ?>
+
+                <div class="more">
+                  <?php if ($p_fields['article_link']) { ?>
+                    <span>Link to article</span> <?php echo $icons['arrow']; ?>
+                  <?php } else { ?>
+                    <span>Read Article</span> <?php echo $icons['arrow']; ?>
+                  <?php } ?>
+                </div>
+
+              </a>
 
             </div>
 

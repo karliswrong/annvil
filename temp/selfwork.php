@@ -27,14 +27,21 @@ console_log($selfwork);
       $pic = get_field('main_picture', $p_id);
     ?>
 
-      <div class="selfwork-item">
-        <a href="<?php echo get_the_permalink($p_id); ?>" class="picture lazy" data-bg="<?php echo $pic['sizes']['large']; ?>"></a>
-        <a href="<?php echo get_the_permalink($p_id); ?>" class="p-item-title"><?php echo get_the_title($p_id); ?></a>
-        <a href="<?php echo get_the_permalink($p_id); ?>" class="more no-borders">
+      <a href="<?php echo get_the_permalink($p_id); ?>" class="selfwork-item">
+
+        <div class="picture">
+          <div class="picture-wrapper">
+              <img class="lazy" data-src="<?php echo $pic['sizes']['large']; ?>">
+          </div>
+        </div>
+
+        <div class="p-item-title"><?php echo get_the_title($p_id); ?></div>
+        <div class="more no-borders">
           <span>Learn More</span>
           <?php echo $icons['arrow']; ?>
-        </a>
-      </div>
+        </div>
+
+      </a>
 
     <?php endforeach; ?>
 

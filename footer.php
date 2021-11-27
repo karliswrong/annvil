@@ -1,8 +1,4 @@
-<?php
-
-  include("temp/vars.php");
-
-?>
+<?php include("temp/vars.php"); ?>
 
 
 <div class="footer">
@@ -37,7 +33,9 @@
 
       <ul>
         <?php foreach ($fields_options['awards'] as $a): ?>
-          <li><img src="<?php echo $a['logo']['sizes']['large']; ?>"></li>
+          <li>
+            <span><?php echo $a['name']; ?></span>
+          </li>
         <?php endforeach; ?>
       </ul>
 
@@ -47,24 +45,28 @@
 
   <div class="bottom">
 
-    <div class="logo">
-      <?php echo $icons['logo']; ?>
-    </div>
+    <div class="bottom-wrapper">
 
-    <div class="links">
-
-      <div class="nav">
-        <?php wp_nav_menu( array( 'theme_location' => 'footer-menu' ) ); ?>
+      <div class="logo">
+        <?php echo $icons['logo']; ?>
       </div>
 
-      <div class="social">
-        <?php the_field('social','options'); ?>
+      <div class="links">
+
+        <div class="nav">
+          <?php wp_nav_menu( array( 'theme_location' => 'footer-menu' ) ); ?>
+        </div>
+
+        <div class="social">
+          <?php the_field('social','options'); ?>
+        </div>
+
       </div>
 
-    </div>
+      <div class="copyright">
+        <p>Annvil Ltd © <?php echo date('Y'); ?></p>
+      </div>
 
-    <div class="copyright">
-      <p>Annvil Ltd © <?php echo date('Y'); ?></p>
     </div>
 
   </div>

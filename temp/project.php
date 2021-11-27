@@ -134,8 +134,7 @@
 
       <div class="wrapper">
 
-        <h2>See other<br>
-          projects:</h2>
+        <h2>See other projects:</h2>
 
           <div class="items">
 
@@ -145,24 +144,30 @@
 
               foreach ($related->posts as $p):
                 $p_id = $p->ID;
-                $pic = get_field('vertical_picture', $p_id);
+                $pic = get_field('main_picture', $p_id);
                 ?>
 
-                <div class="portfolio-item animate">
-                    <a href="<?php echo get_the_permalink($p_id); ?>" class="p-item-title">
+                <a href="<?php echo get_the_permalink($p_id); ?>" class="portfolio-item animate">
+
+                    <div class="p-item-title">
                       <div class="table">
                         <div class="cell bottom">
                             <?php echo get_the_title($p_id); ?>
                         </div>
                       </div>
-                    </a>
+                    </div>
 
-                    <a href="<?php echo get_the_permalink($p_id); ?>" class="picture lazy" data-bg="<?php echo $pic['sizes']['large']; ?>"></a>
-                    <a href="<?php echo get_the_permalink($p_id); ?>" class="more no-borders">
+                    <div class="picture">
+                      <div class="picture-wrapper">
+                          <img class="lazy" data-src="<?php echo $pic['sizes']['large']; ?>">
+                      </div>
+                    </div>
+
+                    <div class="more no-borders">
                       <span>Learn More</span>
                       <?php echo $icons['arrow']; ?>
-                    </a>
-                </div>
+                    </div>
+                </a>
 
             <?php endforeach; ?>
 

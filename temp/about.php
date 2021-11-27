@@ -12,6 +12,8 @@ $team = get_field('team');
 
 <div class="about-wrapper">
 
+  <div class="cobalt-2 lazy" data-bg="<?php echo $website_template_url; ?>/assets/images/cobalt2.png"></div>
+
   <div class="about-text">
     <h1><?php the_field('about_title'); ?></h1>
     <div class="text">
@@ -22,6 +24,8 @@ $team = get_field('team');
   <?php if ($team): ?>
 
     <div class="our-team isAnimate" data-anim="anim_2">
+
+      <div class="cobalt-1 lazy" data-bg="<?php echo $website_template_url; ?>/assets/images/cobalt.png"></div>
 
       <div class="team-wrapper">
 

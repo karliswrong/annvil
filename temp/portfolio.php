@@ -29,7 +29,6 @@ console_log($columns);
 </div>
 
 <div class="filters">
-  <p>Filter By:</p>
 
   <?php if ($all_portfolio_terms): ?>
     <ul>
@@ -51,16 +50,20 @@ console_log($columns);
       // console_log($main_pic);
     ?>
 
-    <div class="portfolio-item featured">
-      <a href="<?php echo get_the_permalink($featured_portfolio); ?>" class="picture lazy" data-bg="<?php echo $main_pic['sizes']['large']; ?>"></a>
+    <a href="<?php echo get_the_permalink($p_id); ?>" class="portfolio-item featured">
+      <div class="picture">
+        <div class="picture-wrapper">
+            <img class="lazy" data-src="<?php echo $main_pic['sizes']['large']; ?>">
+        </div>
+      </div>
       <div class="title">
-        <a href="<?php echo get_the_permalink($featured_portfolio); ?>" class="p-item-title"><?php echo get_the_title($featured_portfolio); ?></a>
-        <a href="#" class="more no-borders">
+        <div class="p-item-title"><?php echo get_the_title($featured_portfolio); ?></div>
+        <div class="more no-borders">
           <span>Learn More</span>
           <?php echo $icons['arrow']; ?>
-        </a>
+        </div>
       </div>
-    </div>
+    </a>
 
     <?php endif; ?>
 
@@ -72,7 +75,7 @@ console_log($columns);
 
         foreach ($portfolio->posts as $p):
           $p_id = $p->ID;
-          $pic = get_field('vertical_picture', $p_id);
+          $pic = get_field('main_picture', $p_id);
           ?>
 
           <?php if ($p_id != $featured_portfolio): ?>
@@ -86,24 +89,28 @@ console_log($columns);
 
             <?php } ?>
 
-              <div class="portfolio-item animate">
+              <a href="<?php echo get_the_permalink($p_id); ?>" class="portfolio-item animate">
 
-                <a href="<?php echo get_the_permalink($p_id); ?>" class="p-item-title">
+                <div class="p-item-title">
                   <div class="table">
                     <div class="cell bottom">
                         <?php echo get_the_title($p_id); ?>
                     </div>
                   </div>
-                </a>
+                </div>
 
-                <a href="<?php echo get_the_permalink($p_id); ?>" class="picture lazy" data-bg="<?php echo $pic['sizes']['large']; ?>"></a>
+                <div class="picture">
+                  <div class="picture-wrapper">
+                      <img class="lazy" data-src="<?php echo $pic['sizes']['medium']; ?>">
+                  </div>
+                </div>
 
-                <a href="<?php echo get_the_permalink($p_id); ?>" class="more no-borders">
+                <div class="more no-borders">
                   <span>Learn More</span>
                   <?php echo $icons['arrow']; ?>
-                </a>
+                </div>
 
-              </div>
+              </a>
 
               <?php $count++; ?>
 
@@ -119,6 +126,12 @@ console_log($columns);
       <?php endforeach; ?>
 
     </div>
+
+  </div>
+
+</div>
+
+  </div>
 
   </div>
 

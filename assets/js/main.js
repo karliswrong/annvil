@@ -28,8 +28,6 @@ $(document).ready(function() {
 
   if ($("body").hasClass("page-template-home")) {
     getAbout();
-
-
   }
 
   $(".header a.home").addClass("show");
@@ -56,6 +54,8 @@ $(document).ready(function() {
     $(".page-title, .portfolio-items, .filters, .about-wrapper, .selfwork-items, .contact-wrapper, .project-title, .project-picture, ._404-wrapper, .paklajs").addClass("show");
 
   } else {
+
+    $(".footer .bottom .links .social").height($(".footer .bottom .links .nav").height());
 
     setInterval(function() {
 

@@ -29,7 +29,6 @@ console_log($news->posts);
 </div>
 
 <div class="filters">
-  <p>Filter By:</p>
 
   <?php if ($all_news_terms): ?>
     <ul>
@@ -51,18 +50,18 @@ console_log($news->posts);
       // console_log($main_pic);
     ?>
 
-      <div class="portfolio-item featured">
+      <a href="<?php echo get_the_permalink($featured_post); ?>" class="portfolio-item featured">
         <?php if ($main_pic): ?>
-          <a href="<?php echo get_the_permalink($featured_post); ?>" class="picture lazy" data-bg="<?php echo $main_pic['sizes']['large']; ?>"></a>
+          <div class="picture lazy" data-bg="<?php echo $main_pic['sizes']['large']; ?>"></div>
         <?php endif; ?>
         <div class="title">
-          <a href="<?php echo get_the_permalink($featured_post); ?>" class="p-item-title"><?php echo get_the_title($featured_post); ?></a>
-          <a href="#" class="more no-borders">
+          <div class="p-item-title"><?php echo get_the_title($featured_post); ?></div>
+          <div class="more no-borders">
             <span>Learn More</span>
             <?php echo $icons['arrow']; ?>
-          </a>
+          </div>
         </div>
-      </div>
+      </a>
 
     <?php endif; ?>
 
@@ -100,31 +99,35 @@ console_log($news->posts);
 
               <div class="post-item animate">
 
-                <?php if ($cover_picture) { ?>
-                  <a href="<?php echo $link; ?>" target="<?php echo $target; ?>" class="cover">
-                      <img class="lazy" data-src="<?php echo $cover_picture; ?>" alt="<?php echo get_the_title($id); ?>" />
-                  </a>
-                <?php } ?>
+                <a href="<?php echo $link; ?>" target="<?php echo $target; ?>">
 
-                <a href="<?php echo $link; ?>" target="<?php echo $target; ?>" class="post-title"><?php echo get_the_title($id); ?></a>
-
-                <?php if ($p_fields['article_name']): ?>
-                  <div class="featured-in">
-                    <span>Featured in <a href="<?php echo $p_fields['article_link']; ?>" target="_blank"><?php echo $p_fields['article_name']; ?></a></span>
-                  </div>
-                <?php endif; ?>
-
-                <?php if ($p_fields['intro']) { ?>
-                  <p class="post-intro"><?php echo $p_fields['intro']; ?></p>
-                <?php } ?>
-
-                <div class="more">
-                  <?php if ($p_fields['article_link']) { ?>
-                    <a href="<?php echo $link; ?>" target="_blank"><span>Link to article</span> <?php echo $icons['arrow']; ?></a>
-                  <?php } else { ?>
-                    <a href="<?php echo $link; ?>"><span>Read Article</span> <?php echo $icons['arrow']; ?></a>
+                  <?php if ($cover_picture) { ?>
+                    <div class="cover">
+                        <img class="lazy" data-src="<?php echo $cover_picture; ?>" alt="<?php echo get_the_title($id); ?>" />
+                    </div>
                   <?php } ?>
-                </div>
+
+                  <div class="post-title"><?php echo get_the_title($id); ?></div>
+
+                  <?php if ($p_fields['article_name']): ?>
+                    <div class="featured-in">
+                      <span>Featured in <?php echo $p_fields['article_name']; ?></span>
+                    </div>
+                  <?php endif; ?>
+
+                  <?php if ($p_fields['intro']) { ?>
+                    <p class="post-intro"><?php echo $p_fields['intro']; ?></p>
+                  <?php } ?>
+
+                  <div class="more">
+                    <?php if ($p_fields['article_link']) { ?>
+                      <span>Link to article</span> <?php echo $icons['arrow']; ?>
+                    <?php } else { ?>
+                      <span>Read Article</span> <?php echo $icons['arrow']; ?>
+                    <?php } ?>
+                  </div>
+
+                </a>
 
               </div>
 
@@ -133,7 +136,7 @@ console_log($news->posts);
             <?php if ($count % 3 == 0) { ?>
               </div>
               </div>
-              </div>
+            </div>
             <?php } ?>
 
 

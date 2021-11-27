@@ -143,12 +143,37 @@ body {
 
     &.tax-type {
         .portfolio-items {
-            margin-top: 40px;
+            margin-top: 60px;
         }
     }
 
     &.page-template-portfolio {
         .footer {
+            .contact-us {
+                .wrapper {
+                    .text {
+                        padding-top: 60px;
+                    }
+
+                    .more-button {
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .awards {
+                display: none;
+            }
+
+            .bottom {
+                margin-top: 0;
+
+                &:before {
+                    display: none;
+                }
+            }
             @include respond(desktop) {
                 margin-top: 50px !important;
             }
@@ -174,8 +199,9 @@ body {
             top          : -30px;
             margin-bottom: 80px;
             @include respond(alldevices) {
-                margin-bottom: 0;
-                top          : 0;
+                margin-bottom : 0;
+                top           : 0;
+                padding-bottom: 60px;
             }
         }
     }
@@ -587,7 +613,7 @@ a.post-edit-link {
     }
 }
 
-a.more {
+.more {
     height        : 80px;
     line-height   : 80px;
     font-size     : $s_medium;
@@ -695,12 +721,11 @@ a.more {
     top     : 0;
     position: relative;
     @include respond(desktop) {
-        @include transition-property(perspective, rotateX, transform);
+        @include transition-property(opacity);
         @include transition-duration(0.2s);
-        @include transform(perspective(600px) rotateX(0deg));
 
         &:hover {
-            @include transform(perspective(600px) rotateX(6deg));
+            @include opacity(0.8);
         }
     }
 }
@@ -733,12 +758,34 @@ a.more {
         border-top : 1px solid $black;
         margin-top : 40px;
         padding-top: 40px;
+        display    : block;
         @include respond(bigdesktop) {
             padding-left: 25%;
         }
         @include respond(mobile) {
             margin-top : 30px;
             padding-top: 30px;
+        }
+        @include respond(desktop) {
+            &:hover {
+                .p-item-title {
+                    color: $blue;
+                }
+
+                .more {
+                    span {
+                        color: $blue;
+                    }
+
+                    svg {
+                        margin-left: 20px;
+
+                        path {
+                            stroke: $blue;
+                        }
+                    }
+                }
+            }
         }
 
         &:first-child {
@@ -747,7 +794,36 @@ a.more {
             padding-top: 0;
         }
 
-        a.p-item-title {
+        .picture {
+            width           : 75%;
+            height          : 0;
+            padding-top     : 40%;
+            position        : relative;
+            background-color: rgba($black,0.1);
+            float           : right;
+            @include respond(alldevices) {
+                width        : 100%;
+                float        : none;
+                margin-bottom: 20px;
+                padding-top  : 50%;
+            }
+
+            .picture-wrapper {
+                position  : absolute;
+                top       : 0;
+                left      : 0;
+                width     : 100%;
+                height    : 100%;
+                text-align: center;
+
+                img {
+                    height : 100%;
+                    display: inline-block;
+                }
+            }
+        }
+
+        .p-item-title {
             float         : left;
             width         : 25%;
             display       : block;
@@ -759,10 +835,6 @@ a.more {
                 padding-right: 30px;
                 @include transition-property(color);
                 @include transition-duration(0.2s);
-
-                &:hover {
-                    color: $blue;
-                }
             }
             @include respond(alldevices) {
                 width    : 100%;
@@ -771,7 +843,7 @@ a.more {
             }
         }
 
-        a.more {
+        .more {
             font-size : $s_bigger;
             margin-top: 30px;
             @include respond(desktop) {
@@ -785,22 +857,6 @@ a.more {
 
             svg {
                 width: 14px;
-            }
-        }
-
-        a.picture {
-            width              : 75%;
-            height             : 0;
-            padding-top        : 43%;
-            overflow           : hidden;
-            float              : right;
-            display            : block;
-            background-size    : cover;
-            background-position: center;
-            @include respond(alldevices) {
-                width        : 100%;
-                float        : none;
-                margin-bottom: 20px;
             }
         }
     }
@@ -857,6 +913,7 @@ a.more {
             }
             @include respond(desktop) {
                 padding-left: 25%;
+                padding-top : 42px;
             }
             @include respond(tablets) {
                 padding-top: 60px;
@@ -874,8 +931,15 @@ a.more {
                     top     : auto;
                     left    : auto;
                 }
-                @include respond(alldevices) {
+                @include respond(tablets) {
                     margin-bottom: 40px;
+                }
+                @include respond(mobile) {
+                    margin-bottom: 20px;
+                    font-size    : $s_bigger;
+                }
+                @include respond(desktop) {
+                    width: 180px;
                 }
             }
         }
@@ -923,10 +987,25 @@ a.more {
         position   : relative;
         margin-left: 30px;
         overflow   : hidden;
+        display    : block;
         @include respond(desktop) {
             &:hover {
-                a.p-item-title {
+                .p-item-title {
                     color: $blue;
+                }
+
+                .more {
+                    span {
+                        color: $blue;
+                    }
+
+                    svg {
+                        margin-left: 20px;
+
+                        path {
+                            stroke: $blue;
+                        }
+                    }
                 }
             }
         }
@@ -949,14 +1028,14 @@ a.more {
             }
         }
 
-        a.p-item-title {
+        .p-item-title {
             margin-bottom : 30px;
             line-height   : 1.1;
             color         : $black;
             text-transform: uppercase;
             font-size     : $s_medium;
             display       : inline-block;
-            height        : 50px;
+            height        : 40px;
             -ms-word-break: break-all;
             word-break    : break-all;
             word-break    : break-word;
@@ -972,19 +1051,32 @@ a.more {
             }
         }
 
-        a.picture {
-            display    : block;
-            height     : 0;
-            padding-top: 140%;
-            overflow   : hidden;
-            @include respond(alldevices) {
-                margin-bottom: 10px;
+        .picture {
+            height          : 0;
+            padding-top     : 50%;
+            position        : relative;
+            background-color: rgba($black,0.1);
+
+            .picture-wrapper {
+                position  : absolute;
+                top       : 0;
+                left      : 0;
+                width     : 100%;
+                height    : 100%;
+                text-align: center;
+
+                img {
+                    max-height: 100%;
+                    max-width : 100%;
+                    display   : inline-block;
+                }
             }
         }
 
-        a.more {
-            font-size : $s_bigger;
-            margin-top: 30px;
+        .more {
+            font-size     : $s_bigger;
+            margin-top    : 30px;
+            text-transform: uppercase;
             @include respond(desktop) {
                 @include transition-property(color);
                 @include transition-duration(0.2s);
@@ -1058,22 +1150,26 @@ a.more {
                     padding-top   : 20px;
                 }
 
-                a.p-item-title {
+                .p-item-title {
                     display      : block;
                     font-size    : $s_big_small;
                     height       : auto;
                     margin-bottom: 0;
-                    @include respond(alldevices) {
+                    @include respond(tablets) {
                         width    : 80%;
                         font-size: $s_subtitle;
+                    }
+                    @include respond(mobile) {
+                        width    : 100%;
+                        font-size: $s_medium;
                     }
                 }
             }
 
-            a.picture {
+            .picture {
                 width      : 70%;
                 height     : 0;
-                padding-top: 43%;
+                padding-top: 40%;
                 overflow   : hidden;
                 float      : right;
                 display    : block;
@@ -1269,7 +1365,7 @@ a.more {
         }
     }
 
-    a.more {
+    .more {
         position: absolute;
         left    : 40px;
         right   : 40px;
@@ -1287,10 +1383,10 @@ a.more {
 
     .paklajs {
         position: absolute;
-        right   : 40px;
+        right   : -20px;
         bottom  : 0;
-        width   : 600px;
-        z-index : 2;
+        width   : 680px;
+        z-index : 0;
         @include opacity(0);
         @include transition-property(opacity, visibility, bottom);
         @include transition-duration(0.5s);
@@ -1301,14 +1397,31 @@ a.more {
         }
 
         &.show {
-            bottom    : 30px;
+            bottom    : 10px;
             visibility: visible;
             @include opacity(1);
+            @include respond(alldevices) {
+                margin-top: -40px;
+                width     : 100%;
+            }
         }
 
-        img {
-            display: block;
-            width  : 100%;
+        video {
+            display   : block;
+            width     : 100%;
+            visibility: hidden;
+            @include transition-property(opacity, visibility);
+            @include transition-duration(0.2s);
+            @include opacity(0);
+
+            &.loaded {
+                visibility: visible;
+                @include opacity(1);
+            }
+            @include respond(alldevices) {
+                width      : 130%;
+                margin-left: -17%;
+            }
         }
     }
 }
@@ -1318,6 +1431,8 @@ a.more {
     padding-right: 40px;
     padding-top  : 40px;
     margin-bottom: 80px;
+    position     : relative;
+    z-index      : 2;
     @include respond(tablets) {
         margin-top : 80px;
         padding-top: 0;
@@ -1397,15 +1512,8 @@ a.more {
                     }
                     @include respond(desktop) {
                         &.large {
-                            width: 63.2%;
-                        }
-
-                        &:nth-child(2) {
+                            width: 100%;
                             clear: right;
-                        }
-
-                        &:nth-child(3) {
-                            clear: left;
                         }
                     }
 
@@ -1421,13 +1529,24 @@ a.more {
                         }
 
                         .picture {
-                            height             : 0;
-                            padding-top        : 430px;
-                            background-size    : cover;
-                            background-position: center;
-                            @include respond(mobile) {
-                                height     : 220px;
-                                padding-top: 0;
+                            height          : 0;
+                            padding-top     : 50%;
+                            position        : relative;
+                            background-color: rgba($black,0.1);
+                            overflow        : hidden;
+
+                            .picture-wrapper {
+                                position  : absolute;
+                                top       : 0;
+                                left      : 0;
+                                width     : 100%;
+                                height    : 100%;
+                                text-align: center;
+
+                                img {
+                                    height : 100%;
+                                    display: inline-block;
+                                }
                             }
                         }
 
@@ -1445,12 +1564,16 @@ a.more {
         }
     }
 
-    a.more {
-        padding-left: 25%;
+    .more {
+        @include respond(desktop) {
+            padding-left: 25%;
+        }
 
         span {
-            border-left : 1px solid $black;
-            padding-left: 40px;
+            @include respond(desktop) {
+                border-left : 1px solid $black;
+                padding-left: 40px;
+            }
         }
     }
 }
@@ -1461,8 +1584,11 @@ a.more {
     left    : 0;
     width   : 100%;
     height  : 1200px;
-    @include respond(alldevices) {
-        height: 800px;
+    @include respond(tablets) {
+        width: 200%;
+    }
+    @include respond(mobile) {
+        width: 300%;
     }
 
     svg {
@@ -1484,7 +1610,7 @@ a.more {
         padding-right: 30px;
     }
 
-    a.more {
+    .more {
         position: absolute;
         left    : 40px;
         bottom  : 80px;
@@ -1600,10 +1726,18 @@ a.more {
                         @include respond(alldevices) {
                             padding-right: 0;
                         }
+                        @include respond(desktop) {
+                            @include transition-property(opacity);
+                            @include transition-duration(0.2s);
+
+                            &:hover {
+                                @include opacity(0.8);
+                            }
+                        }
 
                         .picture {
                             height             : 0;
-                            padding-top        : 56%;
+                            padding-top        : 50%;
                             overflow           : hidden;
                             background-size    : cover;
                             background-position: center;
@@ -1674,7 +1808,7 @@ a.more {
             }
         }
 
-        a.no-borders {
+        .no-borders {
             position: relative;
             top     : 5px;
         }
@@ -1721,14 +1855,35 @@ a.more {
 
 .post-item {
     overflow: hidden;
+    color   : $black;
+    display : block;
 
-    a,
-    p,
-    span {
-        color: $black;
+    &:active {
+        color: $blue;
     }
 
-    a.cover {
+    a {
+        display: block;
+    }
+    @include respond(desktop) {
+        &:hover {
+            .post-title {
+                color: $blue;
+            }
+
+            span {
+                color: $blue;
+            }
+
+            svg {
+                path {
+                    stroke: $blue;
+                }
+            }
+        }
+    }
+
+    .cover {
         margin-bottom: 30px;
         display      : block;
 
@@ -1743,30 +1898,26 @@ a.more {
         }
     }
 
-    a.post-title {
+    .post-title {
         font-size     : $s_medium;
         line-height   : 1.2;
         text-transform: uppercase;
+        color         : $black;
         @include respond(mobile) {
             font-size: $s_bigger;
         }
-
-        &:active {
-            color: $blue;
-        }
-        @include respond(desktop) {
-            &:hover {
-                color: $blue;
-            }
-        }
     }
 
-    p.post-intro {
+    .post-intro {
         display    : block;
         font-size  : $s_small;
         line-height: 1.5;
         font-family: "ISO";
         margin-top : 30px;
+        color      : $black;
+        @include respond(mobile) {
+            margin-top: 10px;
+        }
     }
 
     .featured-in {
@@ -1778,62 +1929,30 @@ a.more {
             font-size  : $s_small;
             line-height: 20px;
             height     : 20px;
-        }
-
-        a {
-            text-decoration: underline;
-            text-transform : uppercase;
-
-            &:active {
-                color: $blue;
-            }
-            @include respond(desktop) {
-                &:hover {
-                    color: $blue;
-                }
-            }
+            color      : $black;
         }
     }
 
     .more {
-        margin-top: 20px;
-        position  : relative;
+        margin-top : 20px;
+        position   : relative;
+        border     : 0;
         @include respond(mobile) {
             margin-top: 10px;
         }
+        line-height: 20px;
+        height     : 20px;
 
-        a {
-            line-height: 30px;
-            height     : 30px;
+        span {
+            font-size     : $s_small;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-            &:active {
-                color: $blue;
-            }
-            @include respond(desktop) {
-                &:hover {
-                    span {
-                        color: $blue;
-                    }
-
-                    svg {
-                        path {
-                            stroke: $blue;
-                        }
-                    }
-                }
-            }
-
-            span {
-                font-size     : $s_small;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-            }
-
-            svg {
-                width      : 10px;
-                height     : 100%;
-                margin-left: 3px;
-            }
+        svg {
+            width      : 10px;
+            height     : 100%;
+            margin-left: 3px;
         }
     }
 }
@@ -1856,7 +1975,7 @@ a.more {
         padding-bottom: 0;
     }
     @include respond(mobile) {
-        padding: 30px 30px 70px;
+        padding: 30px 30px 50px;
     }
 
     h1 {
@@ -1987,9 +2106,6 @@ a.more {
     }
 
     ul {
-        @include respond(desktop) {
-            float: right;
-        }
         @include respond(alldevices) {
             height         : 43px;
             list-style-type: none;
@@ -2080,7 +2196,7 @@ a.more {
             bottom: 30px;
             @include respond(tablets) {
                 bottom       : 50%;
-                margin-bottom: -255px;
+                margin-bottom: -235px;
             }
             @include respond(mobile) {
                 bottom       : 50%;
@@ -2148,7 +2264,7 @@ a.more {
                 @include respond(alldevices) {
                     height     : 0 !important;
                     position   : relative;
-                    padding-top: 84%;
+                    padding-top: 100%;
                 }
 
                 &:before {
@@ -2211,48 +2327,63 @@ a.more {
     }
 
     .awards {
-        overflow     : hidden;
-        padding-left : 40px;
-        padding-right: 40px;
-        margin-top   : 60px;
-        display      : none;
+        overflow      : hidden;
+        padding-left  : 40px;
+        padding-right : 40px;
+        margin-top    : 30px;
+        display       : none;
+        vertical-align: top;
         @include respond(alldevices) {
-            padding-left: 40%;
-            margin-top  : -13%;
-            position    : relative;
-            z-index     : 4;
+            margin-top    : -21%;
+            position      : relative;
+            z-index       : 4;
+            padding-top   : 20px;
+            padding-bottom: 20px;
+        }
+        @include respond(bigdesktop) {
+            padding-left : 0;
+            padding-right: 0;
+        }
+        @include respond(mobile) {
+            padding-left : 30px;
+            padding-right: 30px;
+        }
+        @include respond(desktop) {
+            text-align: center;
         }
 
         p {
             display    : inline-block;
-            line-height: 60px;
-            height     : 60px;
-            font-size  : $s_medium;
+            font-size  : $s_bigger;
+            line-height: 1.4;
+            @include opacity(0.5);
             @include respond(desktop) {
-                float: left;
+                margin-bottom: 20px;
+                margin-top   : 10px;
             }
         }
 
         ul {
+            display       : inline-block;
+            vertical-align: top;
             @include respond(desktop) {
-                float: right;
+                margin-left: 40px;
+            }
+            @include respond(alldevices) {
+                overflow: hidden;
             }
 
             li {
-                float      : left;
-                margin-left: 50px;
-                @include respond(alldevices) {
-                    margin-left: 0;
-                    float      : none;
-                    margin-top : 20px;
-
-                    &:first-child {
-                        margin-top: 0;
-                    }
+                text-align: left;
+                @include respond(desktop) {
+                    margin : 10px;
+                    display: inline-block;
                 }
-
-                &:first-child {
-                    margin-left: 0;
+                @include respond(alldevices) {
+                    float     : left;
+                    margin-top: 20px;
+                    width     : 50%;
+                    display   : block;
                 }
 
                 img {
@@ -2260,6 +2391,14 @@ a.more {
                     display: inline-block;
                     @include respond(alldevices) {
                         height: 40px;
+                    }
+                }
+
+                span {
+                    font-size  : $s_bigger;
+                    line-height: 1.4;
+                    @include respond(mobile) {
+                        font-size: $s_norm;
                     }
                 }
             }
@@ -2273,10 +2412,15 @@ a.more {
         padding-left : 40px;
         padding-right: 40px;
         position     : relative;
-        @include respond(alldevices) {
+        @include respond(tablets) {
             padding-left: 40%;
             margin-top  : 40px;
-            padding-top : 40px;
+            padding-top : 50px;
+        }
+        @include respond(mobile) {
+            padding-left: 40%;
+            margin-top  : 10px;
+            padding-top : 50px;
         }
 
         &:before {
@@ -2292,6 +2436,12 @@ a.more {
                 left : 30px;
                 right: 30px;
             }
+        }
+
+        .bottom-wrapper {
+            max-width   : 1440px;
+            margin-left : auto;
+            margin-right: auto;
         }
 
         .links,
@@ -2353,12 +2503,17 @@ a.more {
                                     border-bottom: 1px solid $black;
                                 }
                             }
+
+                            &:active {
+                                border-bottom: 1px solid $black;
+                            }
                         }
                     }
                 }
             }
 
             .social {
+                position: relative;
                 @include respond(alldevices) {
                     margin-top: 40px;
                 }
@@ -2369,11 +2524,20 @@ a.more {
 
                 p {
                     line-height: 1.5;
+                    margin-top : 30px;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
 
                     &.address {
-                        margin-top: 130px;
                         @include respond(alldevices) {
                             margin-top: 40px;
+                        }
+                        @include respond(desktop) {
+                            position: absolute;
+                            left    : 0;
+                            bottom  : 0;
                         }
                     }
                 }
@@ -2443,7 +2607,7 @@ a.more {
         padding-top: 40px;
     }
     @include respond(mobile) {
-        padding-top  : 30px;
+        padding-top  : 20px;
         padding-left : 30px;
         padding-right: 30px;
     }
@@ -2460,7 +2624,14 @@ a.more {
             width       : 25%;
             height      : 100%;
             border-right: 1px solid $black;
-            text-align  : center;
+            text-align  : left;
+            padding-top : 40px;
+        }
+
+        .table {
+            .cell {
+                vertical-align: top;
+            }
         }
 
         a {
@@ -2483,6 +2654,18 @@ a.more {
                 }
             }
 
+            &:active {
+                span {
+                    color: $blue;
+                }
+
+                svg {
+                    path {
+                        stroke: $blue;
+                    }
+                }
+            }
+
             span {
                 color         : $black;
                 line-height   : 30px;
@@ -2490,6 +2673,10 @@ a.more {
                 text-transform: uppercase;
                 @include respond(mobile) {
                     font-size: $s_small;
+                }
+                @include respond(desktop) {
+                    @include transition-property(color);
+                    @include transition-duration(0.2s);
                 }
             }
 
@@ -2508,6 +2695,10 @@ a.more {
 
                 path {
                     stroke: $black;
+                    @include respond(desktop) {
+                        @include transition-property(stroke);
+                        @include transition-duration(0.2s);
+                    }
                 }
             }
         }
@@ -2528,8 +2719,9 @@ a.more {
             padding-bottom: 80px;
         }
         @include respond(mobile) {
-            margin-top    : 60px;
-            padding-bottom: 60px;
+            margin-top    : 40px;
+            padding-bottom: 50px;
+            padding-top   : 30px;
         }
 
         h1 {
@@ -2537,14 +2729,20 @@ a.more {
             line-height   : 1.1;
             font-size     : $s_big;
             max-width     : 980px;
+            -ms-word-break: break-all;
+            word-break    : break-all;
+            word-break    : break-word;
             @include respond(tablets) {
                 font-size: $s_big_small;
             }
             @include respond(mobile) {
                 font-size: $s_subtitle;
             }
-            @include respond(alldevices) {
+            @include respond(tablets) {
                 width: 70%;
+            }
+            @include respond(mobile) {
+                width: 100%;
             }
         }
     }
@@ -2652,7 +2850,13 @@ a.more {
                 display: block;
                 float  : left;
                 @include respond(alldevices) {
-                    width: 50%;
+                    &:nth-child(1) {
+                        width: 40%;
+                    }
+
+                    &:nth-child(2) {
+                        width: 60%;
+                    }
                 }
                 @include respond(desktop) {
                     &:nth-child(1) {
@@ -2742,20 +2946,22 @@ img.lazy {
             position     : relative;
             margin-top   : 60px;
             margin-bottom: 60px;
+            touch-action : pan-y !important;
 
             iframe {
-                position: absolute;
-                top     : 0;
-                left    : 0;
-                width   : 100%;
-                height  : 100%;
+                position    : absolute;
+                top         : 0;
+                left        : 0;
+                width       : 100%;
+                height      : 100%;
+                touch-action: pan-y !important;
             }
         }
 
         .subtitle {
             h2 {
                 font-size     : $s_subtitle;
-                line-height   : 1.2;
+                line-height   : 1.3;
                 text-transform: uppercase;
                 @include respond(mobile) {
                     font-size: $s_medium;
@@ -2764,9 +2970,19 @@ img.lazy {
         }
 
         .text {
+            margin-top   : 60px;
+            margin-bottom: 60px;
+            @include respond(mobile) {
+                margin-top   : 30px;
+                margin-bottom: 30px;
+            }
+
             &.bigger {
                 p {
                     font-size: $s_medium;
+                    @include respond(mobile) {
+                        font-size: $s_bigger;
+                    }
                 }
             }
 
@@ -2811,7 +3027,7 @@ img.lazy {
                 }
                 @include respond(desktop) {
                     margin-top    : 30px;
-                    padding-bottom: 30px;
+                    padding-bottom: 10px;
                     float         : left;
                     width         : 46.7%;
                     margin-left   : 30px;
@@ -3038,8 +3254,6 @@ img.lazy {
 }
 
 .about-wrapper {
-    padding-left : 40px;
-    padding-top  : 40px;
     padding-right: 40px;
     color        : $white;
     position     : relative;
@@ -3049,31 +3263,54 @@ img.lazy {
     @include opacity(0);
     @include transition-property(opacity, visibility, top);
     @include transition-duration(0.5s);
+    @include respond(mobile) {
+        padding-right: 30px;
+    }
 
     &.show {
         top       : 0;
         visibility: visible;
         @include opacity(1);
     }
-    @include respond(mobile) {
-        padding-left : 30px;
-        padding-top  : 30px;
-        padding-right: 30px;
+
+    .cobalt-2 {
+        position           : absolute;
+        top                : 80px;
+        bottom             : 0;
+        right              : 0;
+        background-repeat  : no-repeat;
+        background-position: top right;
+        z-index            : 1;
+        background-size    : 440px;
+        width              : 100%;
+        visibility         : hidden;
+        @include transition-property(visibility, opacity);
+        @include transition-duration(0.3s);
+        @include opacity(0);
+        @include respond(bigdesktop) {
+            display: block;
+
+            &.loaded {
+                visibility: visible;
+                @include opacity(1);
+            }
+        }
     }
 
     .about-text {
+        padding-left: 40px;
+        padding-top : 40px;
         @include respond(bigdesktop) {
-            max-width   : 980px;
-            margin-right: auto;
-            margin-left : auto;
-            left        : -10%;
-            position    : relative;
+            width   : 60%;
+            position: relative;
         }
         @include respond(tablets) {
             margin-bottom: 80px;
         }
         @include respond(mobile) {
             margin-bottom: 50px;
+            padding-left : 30px;
+            padding-right: 0;
         }
 
         h1 {
@@ -3089,11 +3326,15 @@ img.lazy {
                 width    : 100%;
                 font-size: $s_subtitle;
             }
+            @include respond(bigdesktop) {
+                width: 70%;
+            }
         }
 
         .text {
-            overflow  : hidden;
-            margin-top: 80px;
+            overflow     : hidden;
+            margin-top   : 80px;
+            margin-bottom: 80px;
             @include respond(tablets) {
                 margin-top: 40px;
             }
@@ -3106,14 +3347,11 @@ img.lazy {
 
             p {
                 display       : inline-block;
-                font-size     : $s_medium;
+                font-size     : $s_bigger;
                 line-height   : 1.4;
                 margin-top    : 20px;
                 padding-right : 60px;
                 vertical-align: top;
-                @include respond(alldevices) {
-                    font-size: $s_bigger;
-                }
                 @include respond(alldevices) {
                     padding-right: 0;
                 }
@@ -3122,13 +3360,57 @@ img.lazy {
     }
 
     .our-team {
-        padding-left: 20%;
-        border-top  : 1px solid $white;
-        @include respond(bigdesktop) {
-            padding-left: 0;
+        border-top   : 1px solid $white;
+        position     : relative;
+        padding-right: 40px;
+        left         : 40px;
+        @include respond(mobile) {
+            padding-right: 0;
+            left         : 30px;
+            margin-right : 30px;
         }
-        @include respond(alldevices) {
-            padding-left: 0;
+        @include respond(tablets) {
+            padding-right: 0;
+            margin-right : 40px;
+        }
+        @include respond(desktop) {
+            padding-right: 30px;
+            padding-left : 50%;
+        }
+
+        .cobalt-1 {
+            position           : absolute;
+            top                : 180px;
+            bottom             : 0;
+            background-repeat  : no-repeat;
+            background-position: 0 0;
+            z-index            : 1;
+            background-size    : 100%;
+            visibility         : hidden;
+            @include transition-property(visibility, opacity);
+            @include transition-duration(0.3s);
+            @include opacity(0);
+            @include respond(desktop) {
+                width: 100%;
+                left : -42%;
+            }
+            @include respond(alldevices) {
+                width              : auto;
+                left               : -40px;
+                right              : 0;
+                top                : 10%;
+                background-size    : 300%;
+                background-position: 70% 0;
+            }
+            @include respond(bigdesktop) {
+                width: 60%;
+                left : -40px;
+            }
+
+            &.loaded {
+                visibility: visible;
+                @include opacity(1);
+            }
         }
 
         .team-wrapper {
@@ -3137,10 +3419,8 @@ img.lazy {
             padding-left  : 30px;
             overflow      : hidden;
             padding-bottom: 80px;
-            @include respond(bigdesktop) {
-                margin-left : auto;
-                margin-right: auto;
-            }
+            position      : relative;
+            z-index       : 2;
             @include respond(alldevices) {
                 border-left   : 0;
                 padding-left  : 0;
@@ -3157,7 +3437,6 @@ img.lazy {
                 font-size     : $s_big;
                 line-height   : 1.1;
                 text-transform: uppercase;
-                width         : 70%;
                 padding-top   : 80px;
                 padding-bottom: 80px;
                 @include respond(tablets) {
@@ -3174,15 +3453,16 @@ img.lazy {
             }
 
             .list {
-                margin-left: -30px;
-                margin-top : -60px;
+                margin-left: -4%;
+                margin-top : -50px;
                 overflow   : hidden;
                 position   : relative;
                 @include respond(alldevices) {
-                    margin-left : 0;
-                    padding-left: 30%;
-                    border-top  : 1px solid $white;
-                    margin-top  : 0;
+                    margin-left   : 0;
+                    padding-left  : 35%;
+                    border-top    : 1px solid $white;
+                    margin-top    : 40px;
+                    padding-bottom: 40px;
 
                     &:before {
                         content         : "";
@@ -3195,22 +3475,18 @@ img.lazy {
                         background-color: $white;
                     }
                 }
-                @include respond(tablets) {
-                    margin-top    : 40px;
-                    padding-bottom: 80px;
-                }
-                @include respond(mobile) {
-                    margin-top    : 30px;
+                @include respond(alldevices) {
+                    padding-top   : 60px;
                     padding-bottom: 60px;
                 }
 
                 .person {
                     float      : left;
-                    width      : 30%;
-                    margin-left: 30px;
-                    margin-top : 60px;
+                    width      : 46%;
+                    margin-left: 4%;
+                    margin-top : 50px;
                     @include respond(desktop) {
-                        &:nth-child(3n+1) {
+                        &:nth-child(2n+1) {
                             clear: left;
                         }
                     }
@@ -3218,14 +3494,10 @@ img.lazy {
                         float      : none;
                         width      : auto;
                         margin-left: 0;
-                    }
-                    @include respond(tablets) {
-                        margin-top  : 50px;
-                        padding-left: 40px;
-                    }
-                    @include respond(mobile) {
-                        margin-top  : 50px;
-                        padding-left: 30px;
+
+                        &:first-child {
+                            margin-top: 0;
+                        }
                     }
 
                     .picture {
@@ -3234,6 +3506,7 @@ img.lazy {
                         background-position: top;
                         height             : 0;
                         overflow           : hidden;
+                        background-color   : rgba($black,0.1);
                     }
 
                     .name {
@@ -3297,9 +3570,10 @@ img.lazy {
     z-index         : 10000;
     background-color: $blue;
     left            : -100%;
+    overflow-x      : hidden !important;
     @include transition-property(left);
     @include transition-duration(0.5s);
-    @include scrollbar($white, 5px, "");
+    @include scrollbar($black, 5px, "");
 
     &.show {
         left: 0;
@@ -3309,12 +3583,25 @@ img.lazy {
         padding-top: 0;
     }
 
+    .about-text {
+        @include respond(mobile) {
+            padding-top: 10px;
+        }
+        @include respond(tablets) {
+            padding-top: 20px;
+        }
+    }
+
     .more {
         text-align   : right;
         margin-bottom: 60px;
         border-top   : 0;
+        margin-left  : 40px;
         @include respond(alldevices) {
             margin-bottom: 30px;
+        }
+        @include respond(mobile) {
+            margin-left: 30px;
         }
 
         span {
@@ -3396,7 +3683,7 @@ img.lazy {
         }
     }
 
-    a.more {
+    .more {
         margin-top: 20px;
         @include respond(desktop) {
             &:hover {

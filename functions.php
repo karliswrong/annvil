@@ -125,6 +125,8 @@ function getAbout() { ?>
 
   <?php
 
+  $website_template_url       =			get_bloginfo('template_url');
+
   $team = get_field('team',163);
 
   ?>
@@ -140,12 +142,13 @@ function getAbout() { ?>
 
   <div class="about-wrapper">
 
+    <div class="cobalt-2 lazy" data-bg="<?php echo $website_template_url; ?>/assets/images/cobalt2.png"></div>
+
     <a class="more white" href="#">
       <span>Go Back</span>
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 10H20" stroke="black" stroke-width="1.5"/>
-      <path d="M20 10C17 10 10 8 10 0" stroke="black" stroke-width="1.5"/>
-      <path d="M20 10C17 10 10 12 10 20" stroke="black" stroke-width="1.5"/>
+      <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 7.00009H20" stroke="black" stroke-width="1.5"/>
+      <path d="M14 1L20 7L14 13" stroke="black" stroke-width="1.5"/>
       </svg>
     </a>
 
@@ -159,6 +162,8 @@ function getAbout() { ?>
     <?php if ($team): ?>
 
       <div class="our-team">
+
+      <div class="cobalt-1 lazy" data-bg="<?php echo $website_template_url; ?>/assets/images/cobalt.png"></div>
 
         <div class="team-wrapper">
 
